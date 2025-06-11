@@ -142,7 +142,14 @@ process MULTIQC {
     path 'multiqc_report.html'
 
     script:
+    // ==> UPDATE THIS SCRIPT BLOCK <==
     """
+    echo "Activating Poetry environment from: ${params.poetry_venv_path}"
+    
+    # 1. Activate the specific Poetry virtual environment for this project
+    source "${params.poetry_venv_path}/bin/activate"
+    
+    # 2. Run multiqc. It is now available in the PATH because of the activation.
     multiqc .
     """
 }
