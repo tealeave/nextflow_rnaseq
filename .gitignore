@@ -206,3 +206,8 @@ genomes/*.fa
 genomes/*.gtf
 genomes/*.gz
 genomes/hisat2_index/
+
+# Nextflow intermediate file and output
+.nextflow/*
+work/*
+results/*
