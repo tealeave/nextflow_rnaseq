@@ -5,8 +5,6 @@ nextflow.enable.dsl=2
 workflow {
 
     // --- Input Channel ---
-    // Reads the samplesheet.csv, creates a map for each row,
-    // and prepares the [meta, [fastq_1, fastq_2]] tuple for downstream processes.
     Channel
         .fromPath(params.samplesheet_file)
         .splitCsv(header: true)
@@ -23,26 +21,26 @@ workflow {
         .set { ch_reads }
 
     // --- Step 1: Quality Control (FastQC) ---
-    ch_fastqc_results = FASTQC(ch_reads)
+    FASTQC(ch_reads)
 
     // --- Step 2: Build HISAT2 Genome Index ---
-    // This process runs only once.
-    ch_hisat2_index = HISAT2_INDEX(file(params.genome_fasta))
+    HISAT2_INDEX(file(params.genome_fasta))
 
     // --- Step 3: Alignment (HISAT2) ---
-    // Aligns reads for each sample to the reference genome.
-    ch_bams = HISAT2_ALIGN(ch_reads, ch_hisat2_index)
+    HISAT2_ALIGN(ch_reads, HISAT2_INDEX.out)
 
     // --- Step 4: Generate Count Matrix (featureCounts) ---
-    // Collects all BAM files and creates a single gene count matrix.
-    ch_featurecounts = FEATURE_COUNTS(ch_bams.map{ it[1] }.collect(), file(params.genome_gtf))
+    FEATURE_COUNTS(
+        HISAT2_ALIGN.out.bam.map{ meta, bam_file -> bam_file }.collect(),
+        file(params.genome_gtf)
+    )
 
     // --- Step 5: Aggregate All Results (MultiQC) ---
-    // Collects logs and reports from all previous steps into a single HTML report.
-    ch_multiqc = MULTIQC(
-        ch_fastqc_results.collect(),
-        ch_bams.map{ it[2] }.collect(), // Alignment summaries
-        ch_featurecounts.summary.collect()
+    // FINAL CORRECTION: We pass each collected set of files as a separate argument.
+    MULTIQC(
+        FASTQC.out.report.collect(),
+        HISAT2_ALIGN.out.summary.collect(),
+        FEATURE_COUNTS.out.summary.collect()
     )
 }
 
@@ -93,7 +91,7 @@ process HISAT2_ALIGN {
     output:
     tuple val(meta), path("*.bam"), emit: bam
     path("*.summary.txt"), emit: summary
-    path("*.bai"), emit: bai // for downstream convenience
+    path("*.bai"), emit: bai
 
     script:
     def prefix = "${meta.id}"
@@ -135,21 +133,23 @@ process FEATURE_COUNTS {
 process MULTIQC {
     publishDir "${params.outdir}", mode: 'copy'
 
+    // FINAL CORRECTION: The input block now declares three named inputs to match the call.
     input:
-    path '*'
+    path(fastqc_reports)
+    path(hisat2_summaries)
+    path(featurecounts_summaries)
 
     output:
     path 'multiqc_report.html'
 
     script:
-    // ==> UPDATE THIS SCRIPT BLOCK <==
     """
     echo "Activating Poetry environment from: ${params.poetry_venv_path}"
-    
+
     # 1. Activate the specific Poetry virtual environment for this project
     source "${params.poetry_venv_path}/bin/activate"
-    
-    # 2. Run multiqc. It is now available in the PATH because of the activation.
+
+    # 2. Run multiqc. Nextflow stages all input files into the current directory.
     multiqc .
     """
 }
