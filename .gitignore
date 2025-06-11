@@ -200,3 +200,9 @@ genomes/*
 # Except the .gitkeep file
 !data/.gitkeep
 !genomes/.gitkeep
+
+# Ignore large reference genome files and indices
+genomes/*.fa
+genomes/*.gtf
+genomes/*.gz
+genomes/hisat2_index/
