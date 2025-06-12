@@ -211,3 +211,4 @@ genomes/hisat2_index/
 .nextflow/*
 work/*
 results/*
+work_symlink/*

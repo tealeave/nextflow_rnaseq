@@ -1,129 +1,233 @@
-Jun-12 01:07:59.792 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile hpc --outdir ./results -resume
-Jun-12 01:07:59.974 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.3
-Jun-12 01:07:59.994 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/data/homezvol2/ddlin/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.3,nf-wave@1.12.1
-Jun-12 01:08:00.034 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jun-12 01:08:00.035 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jun-12 01:08:00.038 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
-Jun-12 01:08:00.049 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jun-12 01:08:00.099 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
-Jun-12 01:08:00.103 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
-Jun-12 01:08:00.142 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /data/homezvol2/ddlin/.nextflow/secrets/store.json
-Jun-12 01:08:00.146 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@12477988] - activable => nextflow.secret.LocalSecretsProvider@12477988
-Jun-12 01:08:00.159 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `hpc`
-Jun-12 01:08:00.711 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [standard, hpc]
-Jun-12 01:08:00.788 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Jun-12 01:08:00.809 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [ridiculous_raman] DSL2 - revision: 0fe35bceaa
-Jun-12 01:08:00.810 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jun-12 01:08:00.811 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jun-12 01:08:00.866 [main] DEBUG nextflow.Session - Session UUID: 67d83ad6-941e-45eb-b28e-03e6d2ce35f5
-Jun-12 01:08:00.866 [main] DEBUG nextflow.Session - Run name: ridiculous_raman
-Jun-12 01:08:00.867 [main] DEBUG nextflow.Session - Executor pool size: 4
-Jun-12 01:08:00.875 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jun-12 01:08:00.880 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jun-12 01:08:00.901 [main] DEBUG nextflow.cli.CmdRun - 
+Jun-12 13:49:16.099 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile hpc -w /share/crsp/lab/pkaiser/ddlin/nextflow_work --outdir /share/crsp/lab/pkaiser/ddlin/rna_seq_final_results --samplesheet_file samplesheet.csv --genome_fasta genomes/hg38.fa --genome_gtf genomes/hg38.gtf -resume
+Jun-12 13:49:16.193 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.3
+Jun-12 13:49:16.214 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/data/homezvol2/ddlin/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.3,nf-wave@1.12.1
+Jun-12 13:49:16.269 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-12 13:49:16.272 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-12 13:49:16.276 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jun-12 13:49:16.291 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-12 13:49:16.314 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
+Jun-12 13:49:16.317 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
+Jun-12 13:49:16.351 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /data/homezvol2/ddlin/.nextflow/secrets/store.json
+Jun-12 13:49:16.354 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@7a94b64e] - activable => nextflow.secret.LocalSecretsProvider@7a94b64e
+Jun-12 13:49:16.369 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `hpc`
+Jun-12 13:49:16.930 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [standard, hpc]
+Jun-12 13:49:17.003 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jun-12 13:49:17.027 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [voluminous_brazil] DSL2 - revision: 872d6fb692
+Jun-12 13:49:17.029 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-12 13:49:17.029 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-12 13:49:17.091 [main] DEBUG nextflow.Session - Session UUID: f2174882-d034-4fe6-beea-df2ab2154021
+Jun-12 13:49:17.092 [main] DEBUG nextflow.Session - Run name: voluminous_brazil
+Jun-12 13:49:17.092 [main] DEBUG nextflow.Session - Executor pool size: 4
+Jun-12 13:49:17.101 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jun-12 13:49:17.107 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-12 13:49:17.132 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 25.04.3 build 5949
   Created: 02-06-2025 20:56 UTC (13:56 PDT)
   System: Linux 4.18.0-553.22.1.el8_10.x86_64
   Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.13+11-LTS
   Encoding: UTF-8 (UTF-8)
-  Process: 2270048@hpc3-14-17 [10.240.58.30]
-  CPUs: 4 - Mem: 12 GB (729 MB) - Swap: 0 (0)
-Jun-12 01:08:00.969 [main] DEBUG nextflow.Session - Work-dir: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/work [fhgfs]
-Jun-12 01:08:00.970 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/bin
-Jun-12 01:08:00.980 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jun-12 01:08:00.991 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jun-12 01:08:00.998 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
-Jun-12 01:08:01.033 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jun-12 01:08:01.045 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 5; maxThreads: 1000
-Jun-12 01:08:01.452 [main] DEBUG nextflow.Session - Session start
-Jun-12 01:08:02.475 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jun-12 01:08:02.609 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_448837288476032d: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/main.nf
-Jun-12 01:08:02.609 [main] DEBUG nextflow.Session - Session aborted -- Cause: Missing process or function isEmpty()
-Jun-12 01:08:02.630 [main] DEBUG nextflow.Session - The following nodes are still active:
-  [operator] splitCsv
-  [operator] map
-  [operator] ifEmpty
-  [operator] branch
+  Process: 2818039@hpc3-14-17 [10.240.58.30]
+  CPUs: 4 - Mem: 12 GB (147.8 MB) - Swap: 0 (0)
+Jun-12 13:49:17.169 [main] DEBUG nextflow.Session - Work-dir: /share/crsp/lab/pkaiser/ddlin/nextflow_work [nfs]
+Jun-12 13:49:17.170 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/bin
+Jun-12 13:49:17.183 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-12 13:49:17.194 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-12 13:49:17.200 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jun-12 13:49:17.226 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-12 13:49:17.239 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 5; maxThreads: 1000
+Jun-12 13:49:17.447 [main] DEBUG nextflow.Session - Session start
+Jun-12 13:49:18.707 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-12 13:49:18.929 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CAT_SE_READS|MERGE_COUNTS` matches process CAT_SE_READS
+Jun-12 13:49:18.945 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:18.945 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:18.955 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jun-12 13:49:18.961 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jun-12 13:49:18.964 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jun-12 13:49:18.966 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jun-12 13:49:18.989 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CAT_SE_READS': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.032 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TRIM_GALORE_.*` matches process TRIM_GALORE_SE
+Jun-12 13:49:19.035 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:19.035 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:19.037 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRIM_GALORE_SE': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.048 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TRIM_GALORE_.*` matches process TRIM_GALORE_PE
+Jun-12 13:49:19.048 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TRIM_GALORE_PE` matches process TRIM_GALORE_PE
+Jun-12 13:49:19.052 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:19.052 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:19.053 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRIM_GALORE_PE': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.072 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FASTQC_.*` matches process FASTQC_TRIM
+Jun-12 13:49:19.078 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:19.078 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:19.079 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FASTQC_TRIM': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.093 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:HISAT2_INDEX` matches process HISAT2_INDEX
+Jun-12 13:49:19.096 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:19.096 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:19.098 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'HISAT2_INDEX': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.110 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:HISAT2_ALIGN` matches process HISAT2_ALIGN
+Jun-12 13:49:19.114 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:19.114 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:19.115 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'HISAT2_ALIGN': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.119 [main] INFO  nextflow.Nextflow - Running the full pipeline.
+Jun-12 13:49:19.137 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FEATURE_COUNTS_.*` matches process FEATURE_COUNTS_PE
+Jun-12 13:49:19.139 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:19.139 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:19.140 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FEATURE_COUNTS_PE': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.151 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FEATURE_COUNTS_.*` matches process FEATURE_COUNTS_SE
+Jun-12 13:49:19.152 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:19.152 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:19.153 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FEATURE_COUNTS_SE': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.165 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CAT_SE_READS|MERGE_COUNTS` matches process MERGE_COUNTS
+Jun-12 13:49:19.166 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:19.167 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:19.167 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_COUNTS': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.183 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MULTIQC` matches process MULTIQC
+Jun-12 13:49:19.184 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 13:49:19.184 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 13:49:19.185 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MULTIQC': maxForks=0; fair=false; array=0
+Jun-12 13:49:19.189 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: FASTQC_RAW, TRIM_GALORE_SE, FEATURE_COUNTS_SE, MERGE_COUNTS, TRIM_GALORE_PE, FEATURE_COUNTS_PE, FASTQC_TRIM, CAT_SE_READS, HISAT2_ALIGN, MULTIQC, HISAT2_INDEX
+Jun-12 13:49:19.193 [main] DEBUG nextflow.Session - Igniting dataflow network (12)
+Jun-12 13:49:19.198 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CAT_SE_READS
+Jun-12 13:49:19.199 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_GALORE_SE
+Jun-12 13:49:19.199 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_GALORE_PE
+Jun-12 13:49:19.199 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FASTQC_TRIM
+Jun-12 13:49:19.199 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HISAT2_INDEX
+Jun-12 13:49:19.199 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HISAT2_ALIGN
+Jun-12 13:49:19.201 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FEATURE_COUNTS_PE
+Jun-12 13:49:19.205 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FEATURE_COUNTS_SE
+Jun-12 13:49:19.205 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_COUNTS
+Jun-12 13:49:19.231 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MULTIQC
+Jun-12 13:49:19.231 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_7569f3559d359b67: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/main.nf
+Jun-12 13:49:19.231 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun-12 13:49:19.231 [main] DEBUG nextflow.Session - Session await
+Jun-12 13:49:19.400 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [99/48bba2] Cached process > HISAT2_INDEX
+Jun-12 13:49:19.402 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [b8/f18864] Cached process > CAT_SE_READS (Met_468_Rep1)
+Jun-12 13:49:19.422 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [57/33b15b] Cached process > TRIM_GALORE_PE (Hcy_293T_Rep2)
+Jun-12 13:49:19.404 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [c7/0ed535] Cached process > CAT_SE_READS (Hcy_468_Rep2)
+Jun-12 13:49:19.405 [Actor Thread 13] INFO  nextflow.processor.TaskProcessor - [2b/8796bb] Cached process > CAT_SE_READS (Hcy_468_Rep3)
+Jun-12 13:49:19.413 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [bf/f2c413] Cached process > TRIM_GALORE_PE (Hcy_293T_Rep1)
+Jun-12 13:49:19.414 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [74/fb1350] Cached process > CAT_SE_READS (Hcy_468_Rep1)
+Jun-12 13:49:19.427 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [f7/90f8c3] Cached process > TRIM_GALORE_PE (Hcy_293T_Rep3)
+Jun-12 13:49:19.416 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [c8/ca9f5e] Cached process > TRIM_GALORE_PE (Met_293T_Rep1)
+Jun-12 13:49:19.446 [Actor Thread 5] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-12 13:49:19.485 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [83/852ad9] Cached process > CAT_SE_READS (Met_468_Rep2)
+Jun-12 13:49:19.492 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [32/2b738a] Cached process > TRIM_GALORE_SE (Hcy_468_Rep3)
+Jun-12 13:49:19.504 [Actor Thread 13] INFO  nextflow.processor.TaskProcessor - [83/be314d] Cached process > TRIM_GALORE_SE (Hcy_468_Rep2)
+Jun-12 13:49:19.506 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [ea/401c04] Cached process > TRIM_GALORE_SE (Met_468_Rep1)
+Jun-12 13:49:19.515 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [14/0e6a1a] Cached process > TRIM_GALORE_SE (Hcy_468_Rep1)
+Jun-12 13:49:19.539 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [67/fe1c6c] Cached process > CAT_SE_READS (Hcy_R8_Rep2)
+Jun-12 13:49:19.545 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [73/2bed93] Cached process > FASTQC_TRIM (Met_293T_Rep1)
+Jun-12 13:49:19.549 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [ed/4120ee] Cached process > FASTQC_TRIM (Hcy_293T_Rep2)
+Jun-12 13:49:19.563 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [15/d83271] Cached process > CAT_SE_READS (Hcy_R8_Rep1)
+Jun-12 13:49:19.588 [Actor Thread 22] INFO  nextflow.processor.TaskProcessor - [04/52c1ec] Cached process > FASTQC_TRIM (Hcy_468_Rep3)
+Jun-12 13:49:19.590 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [66/56c701] Cached process > HISAT2_ALIGN (Hcy_293T_Rep2)
+Jun-12 13:49:19.598 [Actor Thread 26] INFO  nextflow.processor.TaskProcessor - [00/a1da8e] Cached process > HISAT2_ALIGN (Hcy_293T_Rep3)
+Jun-12 13:49:19.602 [Actor Thread 33] INFO  nextflow.processor.TaskProcessor - [47/05688e] Cached process > HISAT2_ALIGN (Hcy_468_Rep3)
+Jun-12 13:49:19.613 [Actor Thread 29] INFO  nextflow.processor.TaskProcessor - [fd/08edae] Cached process > FASTQC_TRIM (Hcy_293T_Rep3)
+Jun-12 13:49:19.614 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [24/e24181] Cached process > CAT_SE_READS (Met_468_Rep3)
+Jun-12 13:49:19.624 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [71/618b64] Cached process > HISAT2_ALIGN (Met_293T_Rep1)
+Jun-12 13:49:19.633 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [4c/b6e811] Cached process > TRIM_GALORE_PE (Met_293T_Rep2)
+Jun-12 13:49:19.636 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [ee/0fc834] Cached process > FASTQC_TRIM (Hcy_468_Rep2)
+Jun-12 13:49:19.646 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [c8/bdddc4] Cached process > TRIM_GALORE_SE (Hcy_R8_Rep1)
+Jun-12 13:49:19.661 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [2b/734825] Cached process > HISAT2_ALIGN (Hcy_468_Rep2)
+Jun-12 13:49:19.662 [Actor Thread 26] INFO  nextflow.processor.TaskProcessor - [bd/923ba7] Cached process > HISAT2_ALIGN (Met_468_Rep1)
+Jun-12 13:49:19.667 [Actor Thread 30] INFO  nextflow.processor.TaskProcessor - [e8/a644a4] Cached process > CAT_SE_READS (Met_R8_Rep1)
+Jun-12 13:49:19.670 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [69/ce8803] Cached process > CAT_SE_READS (Met_R8_Rep2)
+Jun-12 13:49:19.674 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [d5/ec8d1d] Cached process > TRIM_GALORE_PE (Met_293T_Rep3)
+Jun-12 13:49:19.683 [Actor Thread 27] INFO  nextflow.processor.TaskProcessor - [06/eef26f] Cached process > TRIM_GALORE_SE (Met_468_Rep2)
+Jun-12 13:49:19.678 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [26/eb490c] Cached process > HISAT2_ALIGN (Hcy_468_Rep1)
+Jun-12 13:49:19.679 [Actor Thread 22] INFO  nextflow.processor.TaskProcessor - [da/8f89ec] Cached process > FASTQC_TRIM (Met_468_Rep1)
+Jun-12 13:49:19.681 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [70/5400bc] Cached process > TRIM_GALORE_PE (Hcy_R1_Rep1)
+Jun-12 13:49:19.682 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [b6/26d4a9] Cached process > CAT_SE_READS (Met_R8_Rep3)
+Jun-12 13:49:19.700 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [3e/211572] Cached process > TRIM_GALORE_PE (Hcy_R1_Rep3)
+Jun-12 13:49:19.708 [Actor Thread 29] INFO  nextflow.processor.TaskProcessor - [d7/a547e5] Cached process > TRIM_GALORE_SE (Met_468_Rep3)
+Jun-12 13:49:19.709 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [c6/6f6c9f] Cached process > FASTQC_TRIM (Met_293T_Rep2)
+Jun-12 13:49:19.730 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [fb/328f4c] Cached process > TRIM_GALORE_SE (Hcy_R8_Rep2)
+Jun-12 13:49:19.731 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [1c/b3e4a4] Cached process > HISAT2_ALIGN (Hcy_293T_Rep1)
+Jun-12 13:49:19.733 [Actor Thread 34] INFO  nextflow.processor.TaskProcessor - [3c/b33c0c] Cached process > HISAT2_ALIGN (Hcy_R8_Rep1)
+Jun-12 13:49:19.736 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [12/5a7b91] Cached process > CAT_SE_READS (Hcy_R8_Rep3)
+Jun-12 13:49:19.738 [Actor Thread 31] INFO  nextflow.processor.TaskProcessor - [5d/e1eeb2] Cached process > TRIM_GALORE_PE (Hcy_R1_Rep2)
+Jun-12 13:49:19.744 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [3e/01ad26] Cached process > TRIM_GALORE_SE (Met_R8_Rep3)
+Jun-12 13:49:19.748 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [39/360321] Cached process > FASTQC_TRIM (Hcy_468_Rep1)
+Jun-12 13:49:19.752 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [81/10835b] Cached process > TRIM_GALORE_SE (Met_R8_Rep2)
+Jun-12 13:49:19.754 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [03/d5382e] Cached process > FASTQC_TRIM (Hcy_293T_Rep1)
+Jun-12 13:49:19.757 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [f8/acb105] Cached process > TRIM_GALORE_SE (Met_R8_Rep1)
+Jun-12 13:49:19.758 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [fc/2be0e3] Cached process > HISAT2_ALIGN (Met_468_Rep2)
+Jun-12 13:49:19.760 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [eb/74de85] Cached process > FASTQC_TRIM (Hcy_R8_Rep1)
+Jun-12 13:49:19.763 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [80/af3221] Cached process > FASTQC_TRIM (Met_468_Rep2)
+Jun-12 13:49:19.794 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [db/fd9413] Cached process > HISAT2_ALIGN (Met_293T_Rep3)
+Jun-12 13:49:19.798 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [b8/d2d267] Cached process > HISAT2_ALIGN (Hcy_R1_Rep1)
+Jun-12 13:49:19.802 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [c6/fdd171] Cached process > FASTQC_TRIM (Met_293T_Rep3)
+Jun-12 13:49:19.805 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [8c/b86601] Cached process > TRIM_GALORE_PE (Met_R1_Rep1)
+Jun-12 13:49:19.807 [Actor Thread 30] INFO  nextflow.processor.TaskProcessor - [5d/a09782] Cached process > HISAT2_ALIGN (Met_293T_Rep2)
+Jun-12 13:49:19.817 [Actor Thread 21] INFO  nextflow.processor.TaskProcessor - [43/572f08] Cached process > TRIM_GALORE_SE (Hcy_R8_Rep3)
+Jun-12 13:49:19.824 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [e1/e78fad] Cached process > TRIM_GALORE_PE (Met_R1_Rep2)
+Jun-12 13:49:19.825 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [d0/cc0005] Cached process > FASTQC_TRIM (Met_468_Rep3)
+Jun-12 13:49:19.825 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [27/2d1dc6] Cached process > TRIM_GALORE_PE (Met_R1_Rep3)
+Jun-12 13:49:19.834 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [e1/7d57b2] Cached process > FASTQC_TRIM (Hcy_R8_Rep2)
+Jun-12 13:49:19.843 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [9f/ecd930] Cached process > HISAT2_ALIGN (Hcy_R8_Rep2)
+Jun-12 13:49:19.844 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [94/c12f38] Cached process > HISAT2_ALIGN (Met_468_Rep3)
+Jun-12 13:49:19.845 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [eb/f1de6e] Cached process > FASTQC_TRIM (Hcy_R1_Rep2)
+Jun-12 13:49:19.851 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [d1/ba46e9] Cached process > FASTQC_TRIM (Met_R8_Rep3)
+Jun-12 13:49:19.851 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [42/bdba85] Cached process > FASTQC_TRIM (Hcy_R1_Rep3)
+Jun-12 13:49:19.863 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [69/b9d832] Cached process > HISAT2_ALIGN (Hcy_R1_Rep2)
+Jun-12 13:49:19.893 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [82/00bd63] Cached process > HISAT2_ALIGN (Hcy_R1_Rep3)
+Jun-12 13:49:19.894 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [51/f7ba90] Cached process > HISAT2_ALIGN (Met_R8_Rep2)
+Jun-12 13:49:19.895 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [a3/542db7] Cached process > HISAT2_ALIGN (Met_R8_Rep3)
+Jun-12 13:49:19.896 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [44/d6a5da] Cached process > FASTQC_TRIM (Met_R8_Rep1)
+Jun-12 13:49:19.896 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [13/cc6415] Cached process > FASTQC_TRIM (Met_R8_Rep2)
+Jun-12 13:49:19.917 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [19/b115ae] Cached process > FASTQC_TRIM (Hcy_R1_Rep1)
+Jun-12 13:49:19.937 [Actor Thread 2] INFO  nextflow.processor.TaskProcessor - [83/d97484] Cached process > HISAT2_ALIGN (Met_R1_Rep2)
+Jun-12 13:49:19.937 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [f8/dc24b2] Cached process > HISAT2_ALIGN (Hcy_R8_Rep3)
+Jun-12 13:49:19.943 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [72/92d61d] Cached process > HISAT2_ALIGN (Met_R8_Rep1)
+Jun-12 13:49:19.945 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [c7/d7ff15] Cached process > HISAT2_ALIGN (Met_R1_Rep1)
+Jun-12 13:49:19.946 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [34/5dc356] Cached process > FASTQC_TRIM (Hcy_R8_Rep3)
+Jun-12 13:49:19.958 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [eb/c5076f] Cached process > FASTQC_TRIM (Met_R1_Rep2)
+Jun-12 13:49:19.969 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [51/708b28] Cached process > FASTQC_TRIM (Met_R1_Rep3)
+Jun-12 13:49:19.987 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [5e/bfce48] Cached process > FASTQC_TRIM (Met_R1_Rep1)
+Jun-12 13:49:19.997 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [81/df71b7] Cached process > HISAT2_ALIGN (Met_R1_Rep3)
+Jun-12 13:49:20.023 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [9b/7b5f32] Cached process > FEATURE_COUNTS_PE
+Jun-12 13:49:20.025 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [83/92ad8b] Cached process > FEATURE_COUNTS_SE
+Jun-12 13:49:20.046 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [ef/a30ebe] Cached process > MERGE_COUNTS
+Jun-12 13:49:20.173 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MULTIQC > jobId: 39605797; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d
+Jun-12 13:49:20.173 [Task submitter] INFO  nextflow.Session - [9a/e74b63] Submitted process > MULTIQC
+Jun-12 13:49:23.982 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39605797; id: 89; name: MULTIQC; status: COMPLETED; exit: 1; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d started: 1749761363970; exited: 2025-06-12T20:49:20.575519Z; ]
+Jun-12 13:49:23.983 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-12 13:49:23.993 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=MULTIQC; work-dir=/share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d
+  error [nextflow.exception.ProcessFailedException]: Process `MULTIQC` terminated with an error exit status (1)
+Jun-12 13:49:24.005 [TaskFinalizer-1] DEBUG nextflow.processor.TaskRun - Unable to dump output of process 'null' -- Cause: java.nio.file.NoSuchFileException: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d/.command.out
+Jun-12 13:49:24.011 [TaskFinalizer-1] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d/.command.err
+Jun-12 13:49:24.037 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'MULTIQC'
 
-Jun-12 01:08:02.640 [main] ERROR nextflow.cli.Launcher - @unknown
-nextflow.exception.MissingProcessException: Missing process or function isEmpty()
-	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:192)
-	at nextflow.script.BindableDef.invoke_a(BindableDef.groovy:51)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.script.BaseScript.run0(BaseScript.groovy:182)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.script.BaseScript.run(BaseScript.groovy:193)
-	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy:246)
-	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy)
-	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:246)
-	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:139)
-	at nextflow.cli.CmdRun.run(CmdRun.groovy:379)
-	at nextflow.cli.Launcher.run(Launcher.groovy:513)
-	at nextflow.cli.Launcher.main(Launcher.groovy:673)
-Caused by: groovy.lang.MissingMethodException: No signature of method: groovyx.gpars.dataflow.DataflowBroadcast.isEmpty() is applicable for argument types: () values: []
-Possible solutions: identity(groovy.lang.Closure), dump(), inspect(), dump(), dump()
-	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:72)
-	at org.codehaus.groovy.vmplugin.v8.IndyGuardsFiltersAndSignatures.unwrap(IndyGuardsFiltersAndSignatures.java:163)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at Script_448837288476032d$_runScript_closure1$_closure12.doCall(Script_448837288476032d:48)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at groovy.lang.Closure.call(Closure.java:433)
-	at groovy.lang.Closure.call(Closure.java:412)
-	at nextflow.script.WorkflowDef.run0(WorkflowDef.groovy:205)
-	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:189)
-	... 12 common frames omitted
-Jun-12 01:08:02.653 [Actor Thread 3] ERROR nextflow.extension.OperatorImpl - @unknown
-nextflow.exception.WorkflowScriptErrorException: Samplesheet is empty or not found: samplesheet.csv
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.Nextflow.error(Nextflow.groovy:241)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at Script_448837288476032d$_runScript_closure1$_closure12$_closure14.doCall(Script_448837288476032d:36)
-	at Script_448837288476032d$_runScript_closure1$_closure12$_closure14.doCall(Script_448837288476032d)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.extension.OperatorImpl$_ifEmpty_closure30.doCall(OperatorImpl.groovy:1043)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.extension.DataflowHelper$3.afterStop(DataflowHelper.groovy:257)
-	at groovyx.gpars.dataflow.operator.DataflowProcessor.fireAfterStop(DataflowProcessor.java:324)
-	at groovyx.gpars.dataflow.operator.DataflowProcessorActor.afterStop(DataflowProcessorActor.java:59)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokePojoMethod(InvokerHelper.java:633)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:624)
-	at groovyx.gpars.actor.Actor.callDynamic(Actor.java:369)
-	at groovyx.gpars.actor.Actor.handleTermination(Actor.java:320)
-	at groovyx.gpars.actor.AbstractLoopingActor$1.handleMessage(AbstractLoopingActor.java:86)
-	at groovyx.gpars.util.AsyncMessagingCore.run(AsyncMessagingCore.java:132)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by:
+  Process `MULTIQC` terminated with an error exit status (1)
+
+
+Command executed:
+
+  multiqc . -f
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command wrapper:
+  ERROR: Unable to locate a modulefile for 'multiqc/1.14'
+
+Work dir:
+  /share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+Jun-12 13:49:24.039 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun-12 13:49:24.042 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `MULTIQC` terminated with an error exit status (1)
+Jun-12 13:49:24.062 [TaskFinalizer-1] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d/.command.err
+Jun-12 13:49:24.063 [TaskFinalizer-1] DEBUG nextflow.processor.TaskRun - Unable to dump output of process 'null' -- Cause: java.nio.file.NoSuchFileException: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d/.command.out
+Jun-12 13:49:24.064 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jun-12 13:49:24.064 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun-12 13:49:24.068 [main] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d/.command.err
+Jun-12 13:49:24.068 [main] DEBUG nextflow.processor.TaskRun - Unable to dump output of process 'null' -- Cause: java.nio.file.NoSuchFileException: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9a/e74b63b19851522dd56d9f37c4250d/.command.out
+Jun-12 13:49:24.072 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=88; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=24ms; cachedDuration=2d 15h 22m 7s;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=2; peakMemory=8 GB; ]
+Jun-12 13:49:24.268 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun-12 13:49:24.285 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

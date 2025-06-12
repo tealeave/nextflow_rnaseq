@@ -1,129 +1,557 @@
-Jun-12 01:05:23.070 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile hpc -resume
-Jun-12 01:05:23.177 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.3
-Jun-12 01:05:23.196 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/data/homezvol2/ddlin/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.3,nf-wave@1.12.1
-Jun-12 01:05:23.230 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jun-12 01:05:23.232 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jun-12 01:05:23.239 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
-Jun-12 01:05:23.253 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jun-12 01:05:23.279 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
-Jun-12 01:05:23.282 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
-Jun-12 01:05:23.314 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /data/homezvol2/ddlin/.nextflow/secrets/store.json
-Jun-12 01:05:23.317 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@12477988] - activable => nextflow.secret.LocalSecretsProvider@12477988
-Jun-12 01:05:23.323 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `hpc`
-Jun-12 01:05:23.820 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [standard, hpc]
-Jun-12 01:05:23.922 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Jun-12 01:05:23.943 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [small_sammet] DSL2 - revision: 0fe35bceaa
-Jun-12 01:05:23.945 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jun-12 01:05:23.945 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jun-12 01:05:23.997 [main] DEBUG nextflow.Session - Session UUID: 67d83ad6-941e-45eb-b28e-03e6d2ce35f5
-Jun-12 01:05:23.998 [main] DEBUG nextflow.Session - Run name: small_sammet
-Jun-12 01:05:23.998 [main] DEBUG nextflow.Session - Executor pool size: 4
-Jun-12 01:05:24.007 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jun-12 01:05:24.013 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
-Jun-12 01:05:24.038 [main] DEBUG nextflow.cli.CmdRun - 
+Jun-12 12:13:44.052 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile hpc -w /share/crsp/lab/pkaiser/ddlin/nextflow_work --outdir /share/crsp/lab/pkaiser/ddlin/rna_seq_final_results --samplesheet_file samplesheet.csv --genome_fasta genomes/hg38.fa --genome_gtf genomes/hg38.gtf
+Jun-12 12:13:44.138 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.3
+Jun-12 12:13:44.157 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/data/homezvol2/ddlin/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.3,nf-wave@1.12.1
+Jun-12 12:13:44.183 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-12 12:13:44.184 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-12 12:13:44.187 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jun-12 12:13:44.198 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-12 12:13:44.226 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
+Jun-12 12:13:44.229 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
+Jun-12 12:13:44.258 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /data/homezvol2/ddlin/.nextflow/secrets/store.json
+Jun-12 12:13:44.261 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@5a9800f8] - activable => nextflow.secret.LocalSecretsProvider@5a9800f8
+Jun-12 12:13:44.275 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `hpc`
+Jun-12 12:13:44.784 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [standard, hpc]
+Jun-12 12:13:44.819 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jun-12 12:13:44.837 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [golden_yonath] DSL2 - revision: 872d6fb692
+Jun-12 12:13:44.839 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-12 12:13:44.839 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-12 12:13:44.890 [main] DEBUG nextflow.Session - Session UUID: f2174882-d034-4fe6-beea-df2ab2154021
+Jun-12 12:13:44.890 [main] DEBUG nextflow.Session - Run name: golden_yonath
+Jun-12 12:13:44.891 [main] DEBUG nextflow.Session - Executor pool size: 4
+Jun-12 12:13:44.899 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jun-12 12:13:44.905 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-12 12:13:44.925 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 25.04.3 build 5949
   Created: 02-06-2025 20:56 UTC (13:56 PDT)
   System: Linux 4.18.0-553.22.1.el8_10.x86_64
   Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.13+11-LTS
   Encoding: UTF-8 (UTF-8)
-  Process: 2268721@hpc3-14-17 [10.240.58.30]
-  CPUs: 4 - Mem: 12 GB (223 MB) - Swap: 0 (0)
-Jun-12 01:05:24.090 [main] DEBUG nextflow.Session - Work-dir: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/work [fhgfs]
-Jun-12 01:05:24.092 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/bin
-Jun-12 01:05:24.102 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jun-12 01:05:24.111 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jun-12 01:05:24.117 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
-Jun-12 01:05:24.142 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jun-12 01:05:24.151 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 5; maxThreads: 1000
-Jun-12 01:05:24.389 [main] DEBUG nextflow.Session - Session start
-Jun-12 01:05:26.098 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jun-12 01:05:26.236 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_448837288476032d: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/main.nf
-Jun-12 01:05:26.237 [main] DEBUG nextflow.Session - Session aborted -- Cause: Missing process or function isEmpty()
-Jun-12 01:05:26.257 [main] DEBUG nextflow.Session - The following nodes are still active:
-  [operator] splitCsv
-  [operator] map
-  [operator] ifEmpty
-  [operator] branch
+  Process: 2783405@hpc3-14-17 [10.240.58.30]
+  CPUs: 4 - Mem: 12 GB (119.1 MB) - Swap: 0 (0)
+Jun-12 12:13:44.954 [main] DEBUG nextflow.Session - Work-dir: /share/crsp/lab/pkaiser/ddlin/nextflow_work [nfs]
+Jun-12 12:13:44.955 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/bin
+Jun-12 12:13:44.964 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-12 12:13:44.973 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-12 12:13:44.978 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jun-12 12:13:45.005 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-12 12:13:45.013 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 5; maxThreads: 1000
+Jun-12 12:13:45.208 [main] DEBUG nextflow.Session - Session start
+Jun-12 12:13:46.337 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-12 12:13:46.557 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CAT_SE_READS|MERGE_COUNTS|MULTIQC` matches process CAT_SE_READS
+Jun-12 12:13:46.574 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.575 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.585 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jun-12 12:13:46.592 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jun-12 12:13:46.594 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jun-12 12:13:46.596 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jun-12 12:13:46.619 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'CAT_SE_READS': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.661 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TRIM_GALORE_.*` matches process TRIM_GALORE_SE
+Jun-12 12:13:46.664 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.664 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.665 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRIM_GALORE_SE': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.674 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TRIM_GALORE_.*` matches process TRIM_GALORE_PE
+Jun-12 12:13:46.675 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TRIM_GALORE_PE` matches process TRIM_GALORE_PE
+Jun-12 12:13:46.677 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.677 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.677 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRIM_GALORE_PE': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.690 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FASTQC_.*` matches process FASTQC_TRIM
+Jun-12 12:13:46.691 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.691 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.692 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FASTQC_TRIM': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.705 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:HISAT2_INDEX` matches process HISAT2_INDEX
+Jun-12 12:13:46.708 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.708 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.709 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'HISAT2_INDEX': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.728 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:HISAT2_ALIGN` matches process HISAT2_ALIGN
+Jun-12 12:13:46.732 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.732 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.733 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'HISAT2_ALIGN': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.738 [main] INFO  nextflow.Nextflow - Running the full pipeline.
+Jun-12 12:13:46.757 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FEATURE_COUNTS_.*` matches process FEATURE_COUNTS_PE
+Jun-12 12:13:46.759 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.759 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.760 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FEATURE_COUNTS_PE': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.772 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FEATURE_COUNTS_.*` matches process FEATURE_COUNTS_SE
+Jun-12 12:13:46.774 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.774 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.775 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FEATURE_COUNTS_SE': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.788 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CAT_SE_READS|MERGE_COUNTS|MULTIQC` matches process MERGE_COUNTS
+Jun-12 12:13:46.789 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.790 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.790 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MERGE_COUNTS': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.807 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CAT_SE_READS|MERGE_COUNTS|MULTIQC` matches process MULTIQC
+Jun-12 12:13:46.809 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-12 12:13:46.809 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-12 12:13:46.810 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MULTIQC': maxForks=0; fair=false; array=0
+Jun-12 12:13:46.814 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: FASTQC_RAW, TRIM_GALORE_SE, FEATURE_COUNTS_SE, MERGE_COUNTS, TRIM_GALORE_PE, FEATURE_COUNTS_PE, FASTQC_TRIM, CAT_SE_READS, HISAT2_ALIGN, MULTIQC, HISAT2_INDEX
+Jun-12 12:13:46.818 [main] DEBUG nextflow.Session - Igniting dataflow network (12)
+Jun-12 12:13:46.824 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > CAT_SE_READS
+Jun-12 12:13:46.824 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_GALORE_SE
+Jun-12 12:13:46.825 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_GALORE_PE
+Jun-12 12:13:46.826 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FASTQC_TRIM
+Jun-12 12:13:46.827 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HISAT2_INDEX
+Jun-12 12:13:46.828 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HISAT2_ALIGN
+Jun-12 12:13:46.834 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FEATURE_COUNTS_PE
+Jun-12 12:13:46.835 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FEATURE_COUNTS_SE
+Jun-12 12:13:46.839 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MERGE_COUNTS
+Jun-12 12:13:46.842 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MULTIQC
+Jun-12 12:13:46.843 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_7569f3559d359b67: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/main.nf
+Jun-12 12:13:46.843 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun-12 12:13:46.843 [main] DEBUG nextflow.Session - Session await
+Jun-12 12:13:47.167 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_INDEX > jobId: 39581355; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/99/48bba220c94f54739caf352c280372
+Jun-12 12:13:47.167 [Task submitter] INFO  nextflow.Session - [99/48bba2] Submitted process > HISAT2_INDEX
+Jun-12 12:13:47.205 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Hcy_468_Rep3) > jobId: 39581356; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/2b/8796bbdf438581fa2742298b5a2188
+Jun-12 12:13:47.205 [Task submitter] INFO  nextflow.Session - [2b/8796bb] Submitted process > CAT_SE_READS (Hcy_468_Rep3)
+Jun-12 12:13:47.232 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Hcy_293T_Rep1) > jobId: 39581357; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/bf/f2c4136f944e5d296b9eef312b3c6e
+Jun-12 12:13:47.233 [Task submitter] INFO  nextflow.Session - [bf/f2c413] Submitted process > TRIM_GALORE_PE (Hcy_293T_Rep1)
+Jun-12 12:13:47.260 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Met_468_Rep1) > jobId: 39581358; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b8/f188645e9f4bfc95964f47bb365a02
+Jun-12 12:13:47.260 [Task submitter] INFO  nextflow.Session - [b8/f18864] Submitted process > CAT_SE_READS (Met_468_Rep1)
+Jun-12 12:13:47.286 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Met_293T_Rep1) > jobId: 39581359; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c8/ca9f5eb4180e3180646b6bcdc207cc
+Jun-12 12:13:47.287 [Task submitter] INFO  nextflow.Session - [c8/ca9f5e] Submitted process > TRIM_GALORE_PE (Met_293T_Rep1)
+Jun-12 12:13:47.313 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Hcy_468_Rep1) > jobId: 39581360; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/74/fb1350b4215f69e662ef3a155c30e7
+Jun-12 12:13:47.313 [Task submitter] INFO  nextflow.Session - [74/fb1350] Submitted process > CAT_SE_READS (Hcy_468_Rep1)
+Jun-12 12:13:47.340 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Hcy_468_Rep2) > jobId: 39581361; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/0ed535182ef5b09ba84e916d5e5022
+Jun-12 12:13:47.340 [Task submitter] INFO  nextflow.Session - [c7/0ed535] Submitted process > CAT_SE_READS (Hcy_468_Rep2)
+Jun-12 12:13:47.368 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Hcy_293T_Rep2) > jobId: 39581362; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/57/33b15ba47e51a8547e7716f7de42ff
+Jun-12 12:13:47.368 [Task submitter] INFO  nextflow.Session - [57/33b15b] Submitted process > TRIM_GALORE_PE (Hcy_293T_Rep2)
+Jun-12 12:13:47.394 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Hcy_293T_Rep3) > jobId: 39581363; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f7/90f8c3763f7a0aa781a5b8d38319df
+Jun-12 12:13:47.394 [Task submitter] INFO  nextflow.Session - [f7/90f8c3] Submitted process > TRIM_GALORE_PE (Hcy_293T_Rep3)
+Jun-12 12:13:47.421 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Hcy_R8_Rep1) > jobId: 39581364; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/15/d832713e898401acaf0088d2fe8d0f
+Jun-12 12:13:47.421 [Task submitter] INFO  nextflow.Session - [15/d83271] Submitted process > CAT_SE_READS (Hcy_R8_Rep1)
+Jun-12 12:13:47.449 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Met_293T_Rep2) > jobId: 39581365; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/4c/b6e811bb36d62ab619ed88a397df86
+Jun-12 12:13:47.449 [Task submitter] INFO  nextflow.Session - [4c/b6e811] Submitted process > TRIM_GALORE_PE (Met_293T_Rep2)
+Jun-12 12:13:47.476 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Hcy_R1_Rep2) > jobId: 39581366; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/e1eeb2c939b379ccb47444fcdbf2a6
+Jun-12 12:13:47.476 [Task submitter] INFO  nextflow.Session - [5d/e1eeb2] Submitted process > TRIM_GALORE_PE (Hcy_R1_Rep2)
+Jun-12 12:13:47.502 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Met_468_Rep2) > jobId: 39581367; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/852ad9fc63a9a91a0bf96ec66fe118
+Jun-12 12:13:47.502 [Task submitter] INFO  nextflow.Session - [83/852ad9] Submitted process > CAT_SE_READS (Met_468_Rep2)
+Jun-12 12:13:47.531 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Hcy_R1_Rep1) > jobId: 39581368; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/70/5400bc27609a8322523ef0b37571df
+Jun-12 12:13:47.531 [Task submitter] INFO  nextflow.Session - [70/5400bc] Submitted process > TRIM_GALORE_PE (Hcy_R1_Rep1)
+Jun-12 12:13:47.557 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Met_468_Rep3) > jobId: 39581369; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/24/e241811450eb7e440e5cfb91ca27e3
+Jun-12 12:13:47.558 [Task submitter] INFO  nextflow.Session - [24/e24181] Submitted process > CAT_SE_READS (Met_468_Rep3)
+Jun-12 12:13:47.585 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Hcy_R8_Rep2) > jobId: 39581370; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/67/fe1c6cc0080ad5b1dadc7255d21439
+Jun-12 12:13:47.585 [Task submitter] INFO  nextflow.Session - [67/fe1c6c] Submitted process > CAT_SE_READS (Hcy_R8_Rep2)
+Jun-12 12:13:47.612 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Met_293T_Rep3) > jobId: 39581371; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d5/ec8d1db0b55b7a46584df987af0678
+Jun-12 12:13:47.612 [Task submitter] INFO  nextflow.Session - [d5/ec8d1d] Submitted process > TRIM_GALORE_PE (Met_293T_Rep3)
+Jun-12 12:13:47.639 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Hcy_R8_Rep3) > jobId: 39581372; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/12/5a7b910bf0520a8af013f424074b4b
+Jun-12 12:13:47.639 [Task submitter] INFO  nextflow.Session - [12/5a7b91] Submitted process > CAT_SE_READS (Hcy_R8_Rep3)
+Jun-12 12:13:47.666 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Met_R1_Rep1) > jobId: 39581373; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/8c/b86601b3ee880b13d598e671dd996e
+Jun-12 12:13:47.666 [Task submitter] INFO  nextflow.Session - [8c/b86601] Submitted process > TRIM_GALORE_PE (Met_R1_Rep1)
+Jun-12 12:13:47.692 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Hcy_R1_Rep3) > jobId: 39581374; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3e/211572f8f94876eee49e50305bf71d
+Jun-12 12:13:47.693 [Task submitter] INFO  nextflow.Session - [3e/211572] Submitted process > TRIM_GALORE_PE (Hcy_R1_Rep3)
+Jun-12 12:13:47.720 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Met_R8_Rep1) > jobId: 39581375; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/e8/a644a47d48d7ecf7557eab2a0fb942
+Jun-12 12:13:47.721 [Task submitter] INFO  nextflow.Session - [e8/a644a4] Submitted process > CAT_SE_READS (Met_R8_Rep1)
+Jun-12 12:13:47.748 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Met_R8_Rep3) > jobId: 39581376; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b6/26d4a91d36d6818829a0afcce445a7
+Jun-12 12:13:47.748 [Task submitter] INFO  nextflow.Session - [b6/26d4a9] Submitted process > CAT_SE_READS (Met_R8_Rep3)
+Jun-12 12:13:47.775 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Met_R1_Rep3) > jobId: 39581377; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/27/2d1dc6b62c7be987f321a0594de514
+Jun-12 12:13:47.776 [Task submitter] INFO  nextflow.Session - [27/2d1dc6] Submitted process > TRIM_GALORE_PE (Met_R1_Rep3)
+Jun-12 12:13:47.802 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_PE (Met_R1_Rep2) > jobId: 39581378; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/e1/e78fadb80e464baeb1c89974af0291
+Jun-12 12:13:47.802 [Task submitter] INFO  nextflow.Session - [e1/e78fad] Submitted process > TRIM_GALORE_PE (Met_R1_Rep2)
+Jun-12 12:13:47.829 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process CAT_SE_READS (Met_R8_Rep2) > jobId: 39581379; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/69/ce8803658884b511087f8cb6e5cfb1
+Jun-12 12:13:47.829 [Task submitter] INFO  nextflow.Session - [69/ce8803] Submitted process > CAT_SE_READS (Met_R8_Rep2)
+Jun-12 12:14:21.628 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581356; id: 9; name: CAT_SE_READS (Hcy_468_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/2b/8796bbdf438581fa2742298b5a2188 started: 1749755661613; exited: 2025-06-12T19:14:00.283134Z; ]
+Jun-12 12:14:21.629 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-12 12:14:21.644 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581358; id: 10; name: CAT_SE_READS (Met_468_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b8/f188645e9f4bfc95964f47bb365a02 started: 1749755661636; exited: 2025-06-12T19:13:56.65194Z; ]
+Jun-12 12:14:21.676 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581361; id: 3; name: CAT_SE_READS (Hcy_468_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/0ed535182ef5b09ba84e916d5e5022 started: 1749755661653; exited: 2025-06-12T19:13:56.542632Z; ]
+Jun-12 12:14:21.698 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581364; id: 14; name: CAT_SE_READS (Hcy_R8_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/15/d832713e898401acaf0088d2fe8d0f started: 1749755661685; exited: 2025-06-12T19:13:57.653042Z; ]
+Jun-12 12:14:21.720 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Met_468_Rep1) > jobId: 39581394; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/ea/401c048981412a55e7ef7ca039bcec
+Jun-12 12:14:21.720 [Task submitter] INFO  nextflow.Session - [ea/401c04] Submitted process > TRIM_GALORE_SE (Met_468_Rep1)
+Jun-12 12:14:21.726 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581367; id: 11; name: CAT_SE_READS (Met_468_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/852ad9fc63a9a91a0bf96ec66fe118 started: 1749755661718; exited: 2025-06-12T19:13:58.207274Z; ]
+Jun-12 12:14:21.739 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581369; id: 12; name: CAT_SE_READS (Met_468_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/24/e241811450eb7e440e5cfb91ca27e3 started: 1749755661732; exited: 2025-06-12T19:13:58.548846Z; ]
+Jun-12 12:14:21.768 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581370; id: 15; name: CAT_SE_READS (Hcy_R8_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/67/fe1c6cc0080ad5b1dadc7255d21439 started: 1749755661743; exited: 2025-06-12T19:13:58.359943Z; ]
+Jun-12 12:14:21.781 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581372; id: 16; name: CAT_SE_READS (Hcy_R8_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/12/5a7b910bf0520a8af013f424074b4b started: 1749755661776; exited: 2025-06-12T19:14:00.679223Z; ]
+Jun-12 12:14:21.799 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581375; id: 20; name: CAT_SE_READS (Met_R8_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/e8/a644a47d48d7ecf7557eab2a0fb942 started: 1749755661795; exited: 2025-06-12T19:14:00.871509Z; ]
+Jun-12 12:14:21.808 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Hcy_468_Rep3) > jobId: 39581395; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/32/2b738a17ce31a7260cbe641f12ae67
+Jun-12 12:14:21.808 [Task submitter] INFO  nextflow.Session - [32/2b738a] Submitted process > TRIM_GALORE_SE (Hcy_468_Rep3)
+Jun-12 12:14:21.814 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581376; id: 25; name: CAT_SE_READS (Met_R8_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b6/26d4a91d36d6818829a0afcce445a7 started: 1749755661802; exited: 2025-06-12T19:14:01.696606Z; ]
+Jun-12 12:14:21.824 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581379; id: 23; name: CAT_SE_READS (Met_R8_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/69/ce8803658884b511087f8cb6e5cfb1 started: 1749755661818; exited: 2025-06-12T19:14:01.849014Z; ]
+Jun-12 12:14:21.850 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Hcy_468_Rep2) > jobId: 39581396; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/be314d576b07296c8ebdc13774f2bc
+Jun-12 12:14:21.850 [Task submitter] INFO  nextflow.Session - [83/be314d] Submitted process > TRIM_GALORE_SE (Hcy_468_Rep2)
+Jun-12 12:14:21.878 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Hcy_R8_Rep1) > jobId: 39581397; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c8/bdddc40fee86ee597b56156f55da53
+Jun-12 12:14:21.878 [Task submitter] INFO  nextflow.Session - [c8/bdddc4] Submitted process > TRIM_GALORE_SE (Hcy_R8_Rep1)
+Jun-12 12:14:21.906 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Met_468_Rep2) > jobId: 39581398; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/06/eef26fe6f8b05b0a4b932f102fb822
+Jun-12 12:14:21.906 [Task submitter] INFO  nextflow.Session - [06/eef26f] Submitted process > TRIM_GALORE_SE (Met_468_Rep2)
+Jun-12 12:14:21.932 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Met_468_Rep3) > jobId: 39581399; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d7/a547e54c9101c0b2f832df4c48f3b7
+Jun-12 12:14:21.933 [Task submitter] INFO  nextflow.Session - [d7/a547e5] Submitted process > TRIM_GALORE_SE (Met_468_Rep3)
+Jun-12 12:14:21.960 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Hcy_R8_Rep2) > jobId: 39581400; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/fb/328f4c25ad38e2cc1fce039319e45c
+Jun-12 12:14:21.960 [Task submitter] INFO  nextflow.Session - [fb/328f4c] Submitted process > TRIM_GALORE_SE (Hcy_R8_Rep2)
+Jun-12 12:14:21.987 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Hcy_R8_Rep3) > jobId: 39581401; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/43/572f0865afa9122f60aaaf5f44bfd8
+Jun-12 12:14:21.987 [Task submitter] INFO  nextflow.Session - [43/572f08] Submitted process > TRIM_GALORE_SE (Hcy_R8_Rep3)
+Jun-12 12:14:22.017 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Met_R8_Rep1) > jobId: 39581402; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f8/acb105975ad3334af94ddaf186fc91
+Jun-12 12:14:22.017 [Task submitter] INFO  nextflow.Session - [f8/acb105] Submitted process > TRIM_GALORE_SE (Met_R8_Rep1)
+Jun-12 12:14:22.045 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Met_R8_Rep3) > jobId: 39581403; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3e/01ad26b42e5673079c085564c807a4
+Jun-12 12:14:22.045 [Task submitter] INFO  nextflow.Session - [3e/01ad26] Submitted process > TRIM_GALORE_SE (Met_R8_Rep3)
+Jun-12 12:14:22.071 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Met_R8_Rep2) > jobId: 39581404; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/81/10835b37723dc8f3f4c95a11028b9c
+Jun-12 12:14:22.071 [Task submitter] INFO  nextflow.Session - [81/10835b] Submitted process > TRIM_GALORE_SE (Met_R8_Rep2)
+Jun-12 12:14:56.630 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581360; id: 2; name: CAT_SE_READS (Hcy_468_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/74/fb1350b4215f69e662ef3a155c30e7 started: 1749755661650; exited: 2025-06-12T19:14:32.68039Z; ]
+Jun-12 12:14:56.744 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE_SE (Hcy_468_Rep1) > jobId: 39581428; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/14/0e6a1a706dca5ace60d80a1983a47e
+Jun-12 12:14:56.744 [Task submitter] INFO  nextflow.Session - [14/0e6a1a] Submitted process > TRIM_GALORE_SE (Hcy_468_Rep1)
+Jun-12 12:17:31.622 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581399; id: 31; name: TRIM_GALORE_SE (Met_468_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d7/a547e54c9101c0b2f832df4c48f3b7 started: 1749755696660; exited: 2025-06-12T19:17:11.403912Z; ]
+Jun-12 12:17:31.683 [TaskFinalizer-3] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-12 12:17:31.707 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_468_Rep3) > jobId: 39581501; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d0/cc0005746218d27db728f43731a691
+Jun-12 12:17:31.708 [Task submitter] INFO  nextflow.Session - [d0/cc0005] Submitted process > FASTQC_TRIM (Met_468_Rep3)
+Jun-12 12:18:36.620 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581403; id: 35; name: TRIM_GALORE_SE (Met_R8_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3e/01ad26b42e5673079c085564c807a4 started: 1749755696665; exited: 2025-06-12T19:18:21.368901Z; ]
+Jun-12 12:18:36.724 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_R8_Rep3) > jobId: 39581526; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d1/ba46e9f3c0258ada93194c8fe0ba55
+Jun-12 12:18:36.724 [Task submitter] INFO  nextflow.Session - [d1/ba46e9] Submitted process > FASTQC_TRIM (Met_R8_Rep3)
+Jun-12 12:18:51.618 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 25 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581355; id: 1; name: HISAT2_INDEX; status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/99/48bba220c94f54739caf352c280372 started: 1749755661605; exited: -; ]
+~> TaskHandler[jobId: 39581357; id: 4; name: TRIM_GALORE_PE (Hcy_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/bf/f2c4136f944e5d296b9eef312b3c6e started: 1749755661632; exited: -; ]
+~> TaskHandler[jobId: 39581359; id: 7; name: TRIM_GALORE_PE (Met_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c8/ca9f5eb4180e3180646b6bcdc207cc started: 1749755661647; exited: -; ]
+~> TaskHandler[jobId: 39581362; id: 5; name: TRIM_GALORE_PE (Hcy_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/57/33b15ba47e51a8547e7716f7de42ff started: 1749755661678; exited: -; ]
+~> TaskHandler[jobId: 39581363; id: 6; name: TRIM_GALORE_PE (Hcy_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f7/90f8c3763f7a0aa781a5b8d38319df started: 1749755661684; exited: -; ]
+~> TaskHandler[jobId: 39581365; id: 8; name: TRIM_GALORE_PE (Met_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/4c/b6e811bb36d62ab619ed88a397df86 started: 1749755661716; exited: -; ]
+~> TaskHandler[jobId: 39581366; id: 18; name: TRIM_GALORE_PE (Hcy_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/e1eeb2c939b379ccb47444fcdbf2a6 started: 1749755661717; exited: -; ]
+~> TaskHandler[jobId: 39581368; id: 17; name: TRIM_GALORE_PE (Hcy_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/70/5400bc27609a8322523ef0b37571df started: 1749755661730; exited: -; ]
+~> TaskHandler[jobId: 39581371; id: 13; name: TRIM_GALORE_PE (Met_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d5/ec8d1db0b55b7a46584df987af0678 started: 1749755661773; exited: -; ]
+~> TaskHandler[jobId: 39581373; id: 21; name: TRIM_GALORE_PE (Met_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/8c/b86601b3ee880b13d598e671dd996e started: 1749755661790; exited: -; ]
+.. remaining tasks omitted.
+Jun-12 12:19:01.625 [Task monitor] DEBUG nextflow.file.FileHelper - FS path type (true): /share/crsp/lab/pkaiser/ddlin/nextflow_work
+Jun-12 12:19:01.644 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581396; id: 28; name: TRIM_GALORE_SE (Hcy_468_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/be314d576b07296c8ebdc13774f2bc started: 1749755696653; exited: 2025-06-12T19:18:41.38165Z; ]
+Jun-12 12:19:01.662 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581400; id: 32; name: TRIM_GALORE_SE (Hcy_R8_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/fb/328f4c25ad38e2cc1fce039319e45c started: 1749755696661; exited: 2025-06-12T19:18:56.5739Z; ]
+Jun-12 12:19:01.705 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_468_Rep2) > jobId: 39581528; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/ee/0fc834dbe05e601bb02816ce6df8fc
+Jun-12 12:19:01.709 [Task submitter] INFO  nextflow.Session - [ee/0fc834] Submitted process > FASTQC_TRIM (Hcy_468_Rep2)
+Jun-12 12:19:06.872 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_R8_Rep2) > jobId: 39581529; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/e1/7d57b26a1e77a576dd918e33fe3a93
+Jun-12 12:19:06.874 [Task submitter] INFO  nextflow.Session - [e1/7d57b2] Submitted process > FASTQC_TRIM (Hcy_R8_Rep2)
+Jun-12 12:19:36.625 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581404; id: 36; name: TRIM_GALORE_SE (Met_R8_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/81/10835b37723dc8f3f4c95a11028b9c started: 1749755696667; exited: 2025-06-12T19:19:24.821907Z; ]
+Jun-12 12:19:36.697 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_R8_Rep2) > jobId: 39581543; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/13/cc6415942df8c0722999ca02e5878c
+Jun-12 12:19:36.698 [Task submitter] INFO  nextflow.Session - [13/cc6415] Submitted process > FASTQC_TRIM (Met_R8_Rep2)
+Jun-12 12:20:01.632 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581394; id: 27; name: TRIM_GALORE_SE (Met_468_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/ea/401c048981412a55e7ef7ca039bcec started: 1749755696646; exited: 2025-06-12T19:19:49.990506Z; ]
+Jun-12 12:20:01.672 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581401; id: 33; name: TRIM_GALORE_SE (Hcy_R8_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/43/572f0865afa9122f60aaaf5f44bfd8 started: 1749755696663; exited: 2025-06-12T19:19:42.396924Z; ]
+Jun-12 12:20:01.676 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_468_Rep1) > jobId: 39581550; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/da/8f89ec54e2323049973216cd6298fa
+Jun-12 12:20:01.676 [Task submitter] INFO  nextflow.Session - [da/8f89ec] Submitted process > FASTQC_TRIM (Met_468_Rep1)
+Jun-12 12:20:02.205 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_R8_Rep3) > jobId: 39581551; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/34/5dc356bc13d56e05960487df23bc92
+Jun-12 12:20:02.205 [Task submitter] INFO  nextflow.Session - [34/5dc356] Submitted process > FASTQC_TRIM (Hcy_R8_Rep3)
+Jun-12 12:20:07.827 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581501; id: 38; name: FASTQC_TRIM (Met_468_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d0/cc0005746218d27db728f43731a691 started: 1749755856628; exited: 2025-06-12T19:19:37.783504Z; ]
+Jun-12 12:20:31.625 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581397; id: 29; name: TRIM_GALORE_SE (Hcy_R8_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c8/bdddc40fee86ee597b56156f55da53 started: 1749755696654; exited: 2025-06-12T19:20:01.99659Z; ]
+Jun-12 12:20:31.706 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_R8_Rep1) > jobId: 39581568; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/eb/74de851ed0cbd668a2107803e948e3
+Jun-12 12:20:31.706 [Task submitter] INFO  nextflow.Session - [eb/74de85] Submitted process > FASTQC_TRIM (Hcy_R8_Rep1)
+Jun-12 12:21:01.641 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581398; id: 30; name: TRIM_GALORE_SE (Met_468_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/06/eef26fe6f8b05b0a4b932f102fb822 started: 1749755696657; exited: 2025-06-12T19:20:34.785118Z; ]
+Jun-12 12:21:01.665 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581402; id: 34; name: TRIM_GALORE_SE (Met_R8_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f8/acb105975ad3334af94ddaf186fc91 started: 1749755696664; exited: 2025-06-12T19:20:45.900369Z; ]
+Jun-12 12:21:01.762 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_468_Rep2) > jobId: 39581574; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/80/af3221a3dbecc83894f9f25d4d148d
+Jun-12 12:21:01.763 [Task submitter] INFO  nextflow.Session - [80/af3221] Submitted process > FASTQC_TRIM (Met_468_Rep2)
+Jun-12 12:21:08.749 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_R8_Rep1) > jobId: 39581575; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/44/d6a5dac0a8d41cbd919ff54a9830ee
+Jun-12 12:21:08.749 [Task submitter] INFO  nextflow.Session - [44/d6a5da] Submitted process > FASTQC_TRIM (Met_R8_Rep1)
+Jun-12 12:21:41.627 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581526; id: 39; name: FASTQC_TRIM (Met_R8_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d1/ba46e9f3c0258ada93194c8fe0ba55 started: 1749755921619; exited: 2025-06-12T19:20:58.730662Z; ]
+Jun-12 12:22:01.634 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581395; id: 26; name: TRIM_GALORE_SE (Hcy_468_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/32/2b738a17ce31a7260cbe641f12ae67 started: 1749755696651; exited: 2025-06-12T19:21:46.80809Z; ]
+Jun-12 12:22:01.671 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581528; id: 40; name: FASTQC_TRIM (Hcy_468_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/ee/0fc834dbe05e601bb02816ce6df8fc started: 1749755946847; exited: 2025-06-12T19:21:47.598731Z; ]
+Jun-12 12:22:01.734 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581529; id: 41; name: FASTQC_TRIM (Hcy_R8_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/e1/7d57b26a1e77a576dd918e33fe3a93 started: 1749755951623; exited: 2025-06-12T19:21:53.068925Z; ]
+Jun-12 12:22:01.743 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_468_Rep3) > jobId: 39581582; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/04/52c1ecfb099f0a9e06a1b084d777a3
+Jun-12 12:22:01.743 [Task submitter] INFO  nextflow.Session - [04/52c1ec] Submitted process > FASTQC_TRIM (Hcy_468_Rep3)
+Jun-12 12:22:46.634 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581543; id: 42; name: FASTQC_TRIM (Met_R8_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/13/cc6415942df8c0722999ca02e5878c started: 1749755981624; exited: 2025-06-12T19:22:32.498092Z; ]
+Jun-12 12:23:01.637 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581428; id: 37; name: TRIM_GALORE_SE (Hcy_468_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/14/0e6a1a706dca5ace60d80a1983a47e started: 1749755701611; exited: 2025-06-12T19:22:23.218306Z; ]
+Jun-12 12:23:01.687 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_468_Rep1) > jobId: 39581595; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/39/360321c959c85e8e64846f7b6943a7
+Jun-12 12:23:01.687 [Task submitter] INFO  nextflow.Session - [39/360321] Submitted process > FASTQC_TRIM (Hcy_468_Rep1)
+Jun-12 12:23:11.632 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581551; id: 44; name: FASTQC_TRIM (Hcy_R8_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/34/5dc356bc13d56e05960487df23bc92 started: 1749756007836; exited: 2025-06-12T19:23:04.567886Z; ]
+Jun-12 12:23:51.629 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 19 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581355; id: 1; name: HISAT2_INDEX; status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/99/48bba220c94f54739caf352c280372 started: 1749755661605; exited: -; ]
+~> TaskHandler[jobId: 39581357; id: 4; name: TRIM_GALORE_PE (Hcy_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/bf/f2c4136f944e5d296b9eef312b3c6e started: 1749755661632; exited: -; ]
+~> TaskHandler[jobId: 39581359; id: 7; name: TRIM_GALORE_PE (Met_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c8/ca9f5eb4180e3180646b6bcdc207cc started: 1749755661647; exited: -; ]
+~> TaskHandler[jobId: 39581362; id: 5; name: TRIM_GALORE_PE (Hcy_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/57/33b15ba47e51a8547e7716f7de42ff started: 1749755661678; exited: -; ]
+~> TaskHandler[jobId: 39581363; id: 6; name: TRIM_GALORE_PE (Hcy_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f7/90f8c3763f7a0aa781a5b8d38319df started: 1749755661684; exited: -; ]
+~> TaskHandler[jobId: 39581365; id: 8; name: TRIM_GALORE_PE (Met_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/4c/b6e811bb36d62ab619ed88a397df86 started: 1749755661716; exited: -; ]
+~> TaskHandler[jobId: 39581366; id: 18; name: TRIM_GALORE_PE (Hcy_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/e1eeb2c939b379ccb47444fcdbf2a6 started: 1749755661717; exited: -; ]
+~> TaskHandler[jobId: 39581368; id: 17; name: TRIM_GALORE_PE (Hcy_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/70/5400bc27609a8322523ef0b37571df started: 1749755661730; exited: -; ]
+~> TaskHandler[jobId: 39581371; id: 13; name: TRIM_GALORE_PE (Met_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d5/ec8d1db0b55b7a46584df987af0678 started: 1749755661773; exited: -; ]
+~> TaskHandler[jobId: 39581373; id: 21; name: TRIM_GALORE_PE (Met_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/8c/b86601b3ee880b13d598e671dd996e started: 1749755661790; exited: -; ]
+.. remaining tasks omitted.
+Jun-12 12:24:01.652 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581550; id: 43; name: FASTQC_TRIM (Met_468_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/da/8f89ec54e2323049973216cd6298fa started: 1749756007831; exited: 2025-06-12T19:23:18.837334Z; ]
+Jun-12 12:24:36.632 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581568; id: 45; name: FASTQC_TRIM (Hcy_R8_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/eb/74de851ed0cbd668a2107803e948e3 started: 1749756036624; exited: 2025-06-12T19:24:02.359406Z; ]
+Jun-12 12:25:01.644 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581574; id: 46; name: FASTQC_TRIM (Met_468_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/80/af3221a3dbecc83894f9f25d4d148d started: 1749756068725; exited: 2025-06-12T19:24:47.635023Z; ]
+Jun-12 12:25:11.634 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581575; id: 47; name: FASTQC_TRIM (Met_R8_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/44/d6a5dac0a8d41cbd919ff54a9830ee started: 1749756071836; exited: 2025-06-12T19:25:00.253821Z; ]
+Jun-12 12:27:01.655 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581582; id: 48; name: FASTQC_TRIM (Hcy_468_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/04/52c1ecfb099f0a9e06a1b084d777a3 started: 1749756127496; exited: 2025-06-12T19:26:42.690243Z; ]
+Jun-12 12:28:01.659 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581595; id: 49; name: FASTQC_TRIM (Hcy_468_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/39/360321c959c85e8e64846f7b6943a7 started: 1749756187515; exited: 2025-06-12T19:27:36.660212Z; ]
+Jun-12 12:28:51.642 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 13 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581355; id: 1; name: HISAT2_INDEX; status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/99/48bba220c94f54739caf352c280372 started: 1749755661605; exited: -; ]
+~> TaskHandler[jobId: 39581357; id: 4; name: TRIM_GALORE_PE (Hcy_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/bf/f2c4136f944e5d296b9eef312b3c6e started: 1749755661632; exited: -; ]
+~> TaskHandler[jobId: 39581359; id: 7; name: TRIM_GALORE_PE (Met_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c8/ca9f5eb4180e3180646b6bcdc207cc started: 1749755661647; exited: -; ]
+~> TaskHandler[jobId: 39581362; id: 5; name: TRIM_GALORE_PE (Hcy_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/57/33b15ba47e51a8547e7716f7de42ff started: 1749755661678; exited: -; ]
+~> TaskHandler[jobId: 39581363; id: 6; name: TRIM_GALORE_PE (Hcy_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f7/90f8c3763f7a0aa781a5b8d38319df started: 1749755661684; exited: -; ]
+~> TaskHandler[jobId: 39581365; id: 8; name: TRIM_GALORE_PE (Met_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/4c/b6e811bb36d62ab619ed88a397df86 started: 1749755661716; exited: -; ]
+~> TaskHandler[jobId: 39581366; id: 18; name: TRIM_GALORE_PE (Hcy_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/e1eeb2c939b379ccb47444fcdbf2a6 started: 1749755661717; exited: -; ]
+~> TaskHandler[jobId: 39581368; id: 17; name: TRIM_GALORE_PE (Hcy_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/70/5400bc27609a8322523ef0b37571df started: 1749755661730; exited: -; ]
+~> TaskHandler[jobId: 39581371; id: 13; name: TRIM_GALORE_PE (Met_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d5/ec8d1db0b55b7a46584df987af0678 started: 1749755661773; exited: -; ]
+~> TaskHandler[jobId: 39581373; id: 21; name: TRIM_GALORE_PE (Met_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/8c/b86601b3ee880b13d598e671dd996e started: 1749755661790; exited: -; ]
+.. remaining tasks omitted.
+Jun-12 12:30:01.665 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581377; id: 24; name: TRIM_GALORE_PE (Met_R1_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/27/2d1dc6b62c7be987f321a0594de514 started: 1749755661816; exited: 2025-06-12T19:29:15.884917Z; ]
+Jun-12 12:30:01.742 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_R1_Rep3) > jobId: 39581787; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/51/708b2847f5e3a20804775f258b9c56
+Jun-12 12:30:01.742 [Task submitter] INFO  nextflow.Session - [51/708b28] Submitted process > FASTQC_TRIM (Met_R1_Rep3)
+Jun-12 12:30:51.647 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581355; id: 1; name: HISAT2_INDEX; status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/99/48bba220c94f54739caf352c280372 started: 1749755661605; exited: 2025-06-12T19:30:29.873259Z; ]
+Jun-12 12:30:51.717 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_R8_Rep3) > jobId: 39581821; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/a3/542db70ace34aa86fc83e0bbef7cbc
+Jun-12 12:30:51.717 [Task submitter] INFO  nextflow.Session - [a3/542db7] Submitted process > HISAT2_ALIGN (Met_R8_Rep3)
+Jun-12 12:30:52.885 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_468_Rep2) > jobId: 39581822; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/2b/734825b4405eb4d4878f1e9ec5a5aa
+Jun-12 12:30:52.885 [Task submitter] INFO  nextflow.Session - [2b/734825] Submitted process > HISAT2_ALIGN (Hcy_468_Rep2)
+Jun-12 12:30:53.558 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_R8_Rep2) > jobId: 39581823; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/51/f7ba9015b378b503cde9830580f588
+Jun-12 12:30:53.559 [Task submitter] INFO  nextflow.Session - [51/f7ba90] Submitted process > HISAT2_ALIGN (Met_R8_Rep2)
+Jun-12 12:30:53.588 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_R8_Rep2) > jobId: 39581824; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9f/ecd930a18bf38f57d1b652db1c3bcb
+Jun-12 12:30:53.588 [Task submitter] INFO  nextflow.Session - [9f/ecd930] Submitted process > HISAT2_ALIGN (Hcy_R8_Rep2)
+Jun-12 12:30:53.764 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_R8_Rep3) > jobId: 39581825; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f8/dc24b221bbf0a7f3f89ec8db51ab8c
+Jun-12 12:30:53.765 [Task submitter] INFO  nextflow.Session - [f8/dc24b2] Submitted process > HISAT2_ALIGN (Hcy_R8_Rep3)
+Jun-12 12:30:55.434 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_468_Rep3) > jobId: 39581826; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/94/c12f38f679568e6e9ca0200df83966
+Jun-12 12:30:55.434 [Task submitter] INFO  nextflow.Session - [94/c12f38] Submitted process > HISAT2_ALIGN (Met_468_Rep3)
+Jun-12 12:30:55.457 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_468_Rep1) > jobId: 39581827; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/bd/923ba7a88bc5bfb64e77a7163a29c0
+Jun-12 12:30:55.458 [Task submitter] INFO  nextflow.Session - [bd/923ba7] Submitted process > HISAT2_ALIGN (Met_468_Rep1)
+Jun-12 12:30:55.480 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_468_Rep2) > jobId: 39581828; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/fc/2be0e392a0625a2588cf03a46cf24c
+Jun-12 12:30:55.480 [Task submitter] INFO  nextflow.Session - [fc/2be0e3] Submitted process > HISAT2_ALIGN (Met_468_Rep2)
+Jun-12 12:30:55.502 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_R8_Rep1) > jobId: 39581829; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3c/b33c0c5e62aa10688229f10fc34cc4
+Jun-12 12:30:55.503 [Task submitter] INFO  nextflow.Session - [3c/b33c0c] Submitted process > HISAT2_ALIGN (Hcy_R8_Rep1)
+Jun-12 12:30:56.326 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_R8_Rep1) > jobId: 39581830; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/72/92d61d4dd48a05ca72b771d07390d5
+Jun-12 12:30:56.326 [Task submitter] INFO  nextflow.Session - [72/92d61d] Submitted process > HISAT2_ALIGN (Met_R8_Rep1)
+Jun-12 12:30:57.302 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_468_Rep3) > jobId: 39581831; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/47/05688ef4ffb92504e87e92cafd7f2a
+Jun-12 12:30:57.303 [Task submitter] INFO  nextflow.Session - [47/05688e] Submitted process > HISAT2_ALIGN (Hcy_468_Rep3)
+Jun-12 12:30:57.421 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_R1_Rep3) > jobId: 39581832; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/81/df71b736f15297f09b0d11a80620dc
+Jun-12 12:30:57.421 [Task submitter] INFO  nextflow.Session - [81/df71b7] Submitted process > HISAT2_ALIGN (Met_R1_Rep3)
+Jun-12 12:30:57.481 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_468_Rep1) > jobId: 39581833; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/26/eb490ca6a5b05a6141d7e0f83ff1c9
+Jun-12 12:30:57.482 [Task submitter] INFO  nextflow.Session - [26/eb490c] Submitted process > HISAT2_ALIGN (Hcy_468_Rep1)
+Jun-12 12:31:03.169 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581368; id: 17; name: TRIM_GALORE_PE (Hcy_R1_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/70/5400bc27609a8322523ef0b37571df started: 1749755661730; exited: 2025-06-12T19:30:19.852993Z; ]
+Jun-12 12:31:03.565 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_R1_Rep1) > jobId: 39581835; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/19/b115ae3c6c8584bd43c56ec2d2b698
+Jun-12 12:31:03.565 [Task submitter] INFO  nextflow.Session - [19/b115ae] Submitted process > FASTQC_TRIM (Hcy_R1_Rep1)
+Jun-12 12:31:08.422 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_R1_Rep1) > jobId: 39581836; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b8/d2d267b8003fff152d8aae6da1c5bc
+Jun-12 12:31:08.423 [Task submitter] INFO  nextflow.Session - [b8/d2d267] Submitted process > HISAT2_ALIGN (Hcy_R1_Rep1)
+Jun-12 12:32:01.659 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581357; id: 4; name: TRIM_GALORE_PE (Hcy_293T_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/bf/f2c4136f944e5d296b9eef312b3c6e started: 1749755661632; exited: 2025-06-12T19:31:37.911012Z; ]
+Jun-12 12:32:01.716 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_293T_Rep1) > jobId: 39581845; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/03/d5382ec7164050d718c608888a9bc2
+Jun-12 12:32:01.717 [Task submitter] INFO  nextflow.Session - [03/d5382e] Submitted process > FASTQC_TRIM (Hcy_293T_Rep1)
+Jun-12 12:32:01.785 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581365; id: 8; name: TRIM_GALORE_PE (Met_293T_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/4c/b6e811bb36d62ab619ed88a397df86 started: 1749755661716; exited: 2025-06-12T19:31:27.16157Z; ]
+Jun-12 12:32:06.855 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_293T_Rep1) > jobId: 39581846; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/1c/b3e4a45cb2615e065b1c7dd14f1e43
+Jun-12 12:32:06.856 [Task submitter] INFO  nextflow.Session - [1c/b3e4a4] Submitted process > HISAT2_ALIGN (Hcy_293T_Rep1)
+Jun-12 12:32:11.669 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_293T_Rep2) > jobId: 39581847; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/a09782ab1683575a93a072a68334f8
+Jun-12 12:32:11.670 [Task submitter] INFO  nextflow.Session - [5d/a09782] Submitted process > HISAT2_ALIGN (Met_293T_Rep2)
+Jun-12 12:32:12.092 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_293T_Rep2) > jobId: 39581848; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c6/6f6c9ff893201fe2b83f65dafcac7e
+Jun-12 12:32:12.092 [Task submitter] INFO  nextflow.Session - [c6/6f6c9f] Submitted process > FASTQC_TRIM (Met_293T_Rep2)
+Jun-12 12:33:01.664 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581363; id: 6; name: TRIM_GALORE_PE (Hcy_293T_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f7/90f8c3763f7a0aa781a5b8d38319df started: 1749755661684; exited: 2025-06-12T19:32:15.383308Z; ]
+Jun-12 12:33:01.682 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581366; id: 18; name: TRIM_GALORE_PE (Hcy_R1_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/e1eeb2c939b379ccb47444fcdbf2a6 started: 1749755661717; exited: 2025-06-12T19:32:10.532174Z; ]
+Jun-12 12:33:01.717 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581371; id: 13; name: TRIM_GALORE_PE (Met_293T_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/d5/ec8d1db0b55b7a46584df987af0678 started: 1749755661773; exited: 2025-06-12T19:32:45.211158Z; ]
+Jun-12 12:33:01.753 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_293T_Rep3) > jobId: 39581869; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/fd/08edae4bea577af3ad88b8dad5a110
+Jun-12 12:33:01.753 [Task submitter] INFO  nextflow.Session - [fd/08edae] Submitted process > FASTQC_TRIM (Hcy_293T_Rep3)
+Jun-12 12:33:13.415 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_293T_Rep3) > jobId: 39581870; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/00/a1da8e3344168b62f440f67aee29de
+Jun-12 12:33:13.417 [Task submitter] INFO  nextflow.Session - [00/a1da8e] Submitted process > HISAT2_ALIGN (Hcy_293T_Rep3)
+Jun-12 12:33:13.514 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_R1_Rep2) > jobId: 39581871; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/69/b9d832c3da7159e2944bb06f0f5878
+Jun-12 12:33:13.514 [Task submitter] INFO  nextflow.Session - [69/b9d832] Submitted process > HISAT2_ALIGN (Hcy_R1_Rep2)
+Jun-12 12:33:16.588 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_R1_Rep2) > jobId: 39581872; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/eb/f1de6e6fd14867c4b7c17e19417b4d
+Jun-12 12:33:16.588 [Task submitter] INFO  nextflow.Session - [eb/f1de6e] Submitted process > FASTQC_TRIM (Hcy_R1_Rep2)
+Jun-12 12:33:16.619 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_293T_Rep3) > jobId: 39581873; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c6/fdd17153da6923501637ada21edf93
+Jun-12 12:33:16.620 [Task submitter] INFO  nextflow.Session - [c6/fdd171] Submitted process > FASTQC_TRIM (Met_293T_Rep3)
+Jun-12 12:33:16.643 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_293T_Rep3) > jobId: 39581874; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/db/fd94134cc6445a2752088af5cca397
+Jun-12 12:33:16.643 [Task submitter] INFO  nextflow.Session - [db/fd9413] Submitted process > HISAT2_ALIGN (Met_293T_Rep3)
+Jun-12 12:33:51.655 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 31 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581359; id: 7; name: TRIM_GALORE_PE (Met_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c8/ca9f5eb4180e3180646b6bcdc207cc started: 1749755661647; exited: -; ]
+~> TaskHandler[jobId: 39581362; id: 5; name: TRIM_GALORE_PE (Hcy_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/57/33b15ba47e51a8547e7716f7de42ff started: 1749755661678; exited: -; ]
+~> TaskHandler[jobId: 39581373; id: 21; name: TRIM_GALORE_PE (Met_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/8c/b86601b3ee880b13d598e671dd996e started: 1749755661790; exited: -; ]
+~> TaskHandler[jobId: 39581374; id: 19; name: TRIM_GALORE_PE (Hcy_R1_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3e/211572f8f94876eee49e50305bf71d started: 1749755661792; exited: -; ]
+~> TaskHandler[jobId: 39581378; id: 22; name: TRIM_GALORE_PE (Met_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/e1/e78fadb80e464baeb1c89974af0291 started: 1749755661817; exited: -; ]
+~> TaskHandler[jobId: 39581787; id: 50; name: FASTQC_TRIM (Met_R1_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/51/708b2847f5e3a20804775f258b9c56 started: 1749756606647; exited: -; ]
+~> TaskHandler[jobId: 39581821; id: 52; name: HISAT2_ALIGN (Met_R8_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/a3/542db70ace34aa86fc83e0bbef7cbc started: 1749756657301; exited: -; ]
+~> TaskHandler[jobId: 39581822; id: 53; name: HISAT2_ALIGN (Hcy_468_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/2b/734825b4405eb4d4878f1e9ec5a5aa started: 1749756657302; exited: -; ]
+~> TaskHandler[jobId: 39581823; id: 55; name: HISAT2_ALIGN (Met_R8_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/51/f7ba9015b378b503cde9830580f588 started: 1749756657303; exited: -; ]
+~> TaskHandler[jobId: 39581824; id: 54; name: HISAT2_ALIGN (Hcy_R8_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9f/ecd930a18bf38f57d1b652db1c3bcb started: 1749756777316; exited: -; ]
+.. remaining tasks omitted.
+Jun-12 12:34:01.673 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581359; id: 7; name: TRIM_GALORE_PE (Met_293T_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c8/ca9f5eb4180e3180646b6bcdc207cc started: 1749755661647; exited: 2025-06-12T19:33:34.746693Z; ]
+Jun-12 12:34:01.724 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_293T_Rep1) > jobId: 39581886; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/73/2bed93f18905444110898812ea7a5c
+Jun-12 12:34:01.724 [Task submitter] INFO  nextflow.Session - [73/2bed93] Submitted process > FASTQC_TRIM (Met_293T_Rep1)
+Jun-12 12:34:07.269 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_293T_Rep1) > jobId: 39581898; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/71/618b646741adcec135a91c3e1dbab5
+Jun-12 12:34:07.271 [Task submitter] INFO  nextflow.Session - [71/618b64] Submitted process > HISAT2_ALIGN (Met_293T_Rep1)
+Jun-12 12:35:01.668 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581373; id: 21; name: TRIM_GALORE_PE (Met_R1_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/8c/b86601b3ee880b13d598e671dd996e started: 1749755661790; exited: 2025-06-12T19:34:35.52559Z; ]
+Jun-12 12:35:07.629 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_R1_Rep1) > jobId: 39581909; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/d7ff15372bbf1b02f3ddce1624bc64
+Jun-12 12:35:07.629 [Task submitter] INFO  nextflow.Session - [c7/d7ff15] Submitted process > HISAT2_ALIGN (Met_R1_Rep1)
+Jun-12 12:35:07.661 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_R1_Rep1) > jobId: 39581910; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5e/bfce4852c7f21516e973954281015c
+Jun-12 12:35:07.661 [Task submitter] INFO  nextflow.Session - [5e/bfce48] Submitted process > FASTQC_TRIM (Met_R1_Rep1)
+Jun-12 12:35:11.661 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581362; id: 5; name: TRIM_GALORE_PE (Hcy_293T_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/57/33b15ba47e51a8547e7716f7de42ff started: 1749755661678; exited: 2025-06-12T19:35:06.642222Z; ]
+Jun-12 12:35:11.706 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_293T_Rep2) > jobId: 39581930; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/ed/4120ee2bdb29f232496fe4c5844954
+Jun-12 12:35:11.706 [Task submitter] INFO  nextflow.Session - [ed/4120ee] Submitted process > FASTQC_TRIM (Hcy_293T_Rep2)
+Jun-12 12:35:17.469 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_293T_Rep2) > jobId: 39581931; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/66/56c7015a7dd95a94d8b6dbb437d313
+Jun-12 12:35:17.469 [Task submitter] INFO  nextflow.Session - [66/56c701] Submitted process > HISAT2_ALIGN (Hcy_293T_Rep2)
+Jun-12 12:35:46.663 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581787; id: 50; name: FASTQC_TRIM (Met_R1_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/51/708b2847f5e3a20804775f258b9c56 started: 1749756606647; exited: 2025-06-12T19:35:33.875335Z; ]
+Jun-12 12:36:01.670 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581378; id: 22; name: TRIM_GALORE_PE (Met_R1_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/e1/e78fadb80e464baeb1c89974af0291 started: 1749755661817; exited: 2025-06-12T19:35:13.648037Z; ]
+Jun-12 12:36:07.582 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Met_R1_Rep2) > jobId: 39581948; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/eb/c5076f46c94e261344aeef91ae312f
+Jun-12 12:36:07.584 [Task submitter] INFO  nextflow.Session - [eb/c5076f] Submitted process > FASTQC_TRIM (Met_R1_Rep2)
+Jun-12 12:36:07.872 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Met_R1_Rep2) > jobId: 39581949; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/d974848d3d40a9d0b99e4a8a608cbb
+Jun-12 12:36:07.872 [Task submitter] INFO  nextflow.Session - [83/d97484] Submitted process > HISAT2_ALIGN (Met_R1_Rep2)
+Jun-12 12:37:01.672 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581374; id: 19; name: TRIM_GALORE_PE (Hcy_R1_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3e/211572f8f94876eee49e50305bf71d started: 1749755661792; exited: 2025-06-12T19:36:50.694135Z; ]
+Jun-12 12:37:01.764 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC_TRIM (Hcy_R1_Rep3) > jobId: 39581996; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/42/bdba85f4811b29bfdb2ba3ed4e7e2c
+Jun-12 12:37:01.765 [Task submitter] INFO  nextflow.Session - [42/bdba85] Submitted process > FASTQC_TRIM (Hcy_R1_Rep3)
+Jun-12 12:37:08.119 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (Hcy_R1_Rep3) > jobId: 39581997; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/82/00bd63df97e35c52a8cd78b0255beb
+Jun-12 12:37:08.119 [Task submitter] INFO  nextflow.Session - [82/00bd63] Submitted process > HISAT2_ALIGN (Hcy_R1_Rep3)
+Jun-12 12:37:41.664 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581821; id: 52; name: HISAT2_ALIGN (Met_R8_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/a3/542db70ace34aa86fc83e0bbef7cbc started: 1749756657301; exited: 2025-06-12T19:37:09.281544Z; ]
+Jun-12 12:37:51.666 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581835; id: 64; name: FASTQC_TRIM (Hcy_R1_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/19/b115ae3c6c8584bd43c56ec2d2b698 started: 1749756696648; exited: 2025-06-12T19:37:50.042372Z; ]
+Jun-12 12:38:01.673 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581822; id: 53; name: HISAT2_ALIGN (Hcy_468_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/2b/734825b4405eb4d4878f1e9ec5a5aa started: 1749756657302; exited: 2025-06-12T19:37:42.415573Z; ]
+Jun-12 12:38:16.665 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581823; id: 55; name: HISAT2_ALIGN (Met_R8_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/51/f7ba9015b378b503cde9830580f588 started: 1749756657303; exited: 2025-06-12T19:38:13.654697Z; ]
+Jun-12 12:38:51.663 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 31 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581824; id: 54; name: HISAT2_ALIGN (Hcy_R8_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9f/ecd930a18bf38f57d1b652db1c3bcb started: 1749756777316; exited: -; ]
+~> TaskHandler[jobId: 39581825; id: 57; name: HISAT2_ALIGN (Hcy_R8_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f8/dc24b221bbf0a7f3f89ec8db51ab8c started: 1749757046663; exited: -; ]
+~> TaskHandler[jobId: 39581826; id: 51; name: HISAT2_ALIGN (Met_468_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/94/c12f38f679568e6e9ca0200df83966 started: 1749757076680; exited: -; ]
+~> TaskHandler[jobId: 39581827; id: 56; name: HISAT2_ALIGN (Met_468_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/bd/923ba7a88bc5bfb64e77a7163a29c0 started: 1749757111664; exited: -; ]
+~> TaskHandler[jobId: 39581828; id: 59; name: HISAT2_ALIGN (Met_468_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/fc/2be0e392a0625a2588cf03a46cf24c started: -; exited: -; ]
+~> TaskHandler[jobId: 39581829; id: 58; name: HISAT2_ALIGN (Hcy_R8_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3c/b33c0c5e62aa10688229f10fc34cc4 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581830; id: 60; name: HISAT2_ALIGN (Met_R8_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/72/92d61d4dd48a05ca72b771d07390d5 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581831; id: 61; name: HISAT2_ALIGN (Hcy_468_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/47/05688ef4ffb92504e87e92cafd7f2a started: -; exited: -; ]
+~> TaskHandler[jobId: 39581832; id: 63; name: HISAT2_ALIGN (Met_R1_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/81/df71b736f15297f09b0d11a80620dc started: -; exited: -; ]
+~> TaskHandler[jobId: 39581833; id: 62; name: HISAT2_ALIGN (Hcy_468_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/26/eb490ca6a5b05a6141d7e0f83ff1c9 started: -; exited: -; ]
+.. remaining tasks omitted.
+Jun-12 12:39:46.674 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581845; id: 66; name: FASTQC_TRIM (Hcy_293T_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/03/d5382ec7164050d718c608888a9bc2 started: 1749756726823; exited: 2025-06-12T19:39:05.704329Z; ]
+Jun-12 12:39:46.680 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581869; id: 70; name: FASTQC_TRIM (Hcy_293T_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/fd/08edae4bea577af3ad88b8dad5a110 started: 1749756786669; exited: 2025-06-12T19:39:30.993742Z; ]
+Jun-12 12:40:31.672 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581873; id: 74; name: FASTQC_TRIM (Met_293T_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c6/fdd17153da6923501637ada21edf93 started: 1749756826660; exited: 2025-06-12T19:39:56.850984Z; ]
+Jun-12 12:40:36.671 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581824; id: 54; name: HISAT2_ALIGN (Hcy_R8_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9f/ecd930a18bf38f57d1b652db1c3bcb started: 1749756777316; exited: 2025-06-12T19:40:04.594193Z; ]
+Jun-12 12:40:51.671 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581886; id: 76; name: FASTQC_TRIM (Met_293T_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/73/2bed93f18905444110898812ea7a5c started: 1749756876658; exited: 2025-06-12T19:40:41.268198Z; ]
+Jun-12 12:40:56.693 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581872; id: 73; name: FASTQC_TRIM (Hcy_R1_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/eb/f1de6e6fd14867c4b7c17e19417b4d started: 1749756826659; exited: 2025-06-12T19:40:42.747297Z; ]
+Jun-12 12:41:31.678 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581848; id: 69; name: FASTQC_TRIM (Met_293T_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c6/6f6c9ff893201fe2b83f65dafcac7e started: 1749756736654; exited: 2025-06-12T19:40:58.436661Z; ]
+Jun-12 12:41:51.679 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581910; id: 78; name: FASTQC_TRIM (Met_R1_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5e/bfce4852c7f21516e973954281015c started: 1749756911666; exited: 2025-06-12T19:41:17.365187Z; ]
+Jun-12 12:43:36.677 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581826; id: 51; name: HISAT2_ALIGN (Met_468_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/94/c12f38f679568e6e9ca0200df83966 started: 1749757076680; exited: 2025-06-12T19:43:18.230837Z; ]
+Jun-12 12:43:51.678 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 22 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581825; id: 57; name: HISAT2_ALIGN (Hcy_R8_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f8/dc24b221bbf0a7f3f89ec8db51ab8c started: 1749757046663; exited: -; ]
+~> TaskHandler[jobId: 39581827; id: 56; name: HISAT2_ALIGN (Met_468_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/bd/923ba7a88bc5bfb64e77a7163a29c0 started: 1749757111664; exited: -; ]
+~> TaskHandler[jobId: 39581828; id: 59; name: HISAT2_ALIGN (Met_468_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/fc/2be0e392a0625a2588cf03a46cf24c started: 1749757231669; exited: -; ]
+~> TaskHandler[jobId: 39581829; id: 58; name: HISAT2_ALIGN (Hcy_R8_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3c/b33c0c5e62aa10688229f10fc34cc4 started: 1749757256685; exited: -; ]
+~> TaskHandler[jobId: 39581830; id: 60; name: HISAT2_ALIGN (Met_R8_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/72/92d61d4dd48a05ca72b771d07390d5 started: 1749757411684; exited: -; ]
+~> TaskHandler[jobId: 39581831; id: 61; name: HISAT2_ALIGN (Hcy_468_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/47/05688ef4ffb92504e87e92cafd7f2a started: -; exited: -; ]
+~> TaskHandler[jobId: 39581832; id: 63; name: HISAT2_ALIGN (Met_R1_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/81/df71b736f15297f09b0d11a80620dc started: -; exited: -; ]
+~> TaskHandler[jobId: 39581833; id: 62; name: HISAT2_ALIGN (Hcy_468_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/26/eb490ca6a5b05a6141d7e0f83ff1c9 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581836; id: 65; name: HISAT2_ALIGN (Hcy_R1_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b8/d2d267b8003fff152d8aae6da1c5bc started: -; exited: -; ]
+~> TaskHandler[jobId: 39581846; id: 67; name: HISAT2_ALIGN (Hcy_293T_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/1c/b3e4a45cb2615e065b1c7dd14f1e43 started: -; exited: -; ]
+.. remaining tasks omitted.
+Jun-12 12:44:01.702 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581930; id: 81; name: FASTQC_TRIM (Hcy_293T_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/ed/4120ee2bdb29f232496fe4c5844954 started: 1749756916668; exited: 2025-06-12T19:43:30.41746Z; ]
+Jun-12 12:44:01.723 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581948; id: 83; name: FASTQC_TRIM (Met_R1_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/eb/c5076f46c94e261344aeef91ae312f started: 1749756971663; exited: 2025-06-12T19:43:51.446044Z; ]
+Jun-12 12:45:31.687 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581825; id: 57; name: HISAT2_ALIGN (Hcy_R8_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/f8/dc24b221bbf0a7f3f89ec8db51ab8c started: 1749757046663; exited: 2025-06-12T19:45:31.450497Z; ]
+Jun-12 12:45:46.691 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581996; id: 85; name: FASTQC_TRIM (Hcy_R1_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/42/bdba85f4811b29bfdb2ba3ed4e7e2c started: 1749757026682; exited: 2025-06-12T19:45:23.125166Z; ]
+Jun-12 12:47:01.688 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581827; id: 56; name: HISAT2_ALIGN (Met_468_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/bd/923ba7a88bc5bfb64e77a7163a29c0 started: 1749757111664; exited: 2025-06-12T19:46:50.641537Z; ]
+Jun-12 12:48:51.688 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 17 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581828; id: 59; name: HISAT2_ALIGN (Met_468_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/fc/2be0e392a0625a2588cf03a46cf24c started: 1749757231669; exited: -; ]
+~> TaskHandler[jobId: 39581829; id: 58; name: HISAT2_ALIGN (Hcy_R8_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3c/b33c0c5e62aa10688229f10fc34cc4 started: 1749757256685; exited: -; ]
+~> TaskHandler[jobId: 39581830; id: 60; name: HISAT2_ALIGN (Met_R8_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/72/92d61d4dd48a05ca72b771d07390d5 started: 1749757411684; exited: -; ]
+~> TaskHandler[jobId: 39581831; id: 61; name: HISAT2_ALIGN (Hcy_468_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/47/05688ef4ffb92504e87e92cafd7f2a started: 1749757536686; exited: -; ]
+~> TaskHandler[jobId: 39581832; id: 63; name: HISAT2_ALIGN (Met_R1_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/81/df71b736f15297f09b0d11a80620dc started: 1749757621814; exited: -; ]
+~> TaskHandler[jobId: 39581833; id: 62; name: HISAT2_ALIGN (Hcy_468_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/26/eb490ca6a5b05a6141d7e0f83ff1c9 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581836; id: 65; name: HISAT2_ALIGN (Hcy_R1_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b8/d2d267b8003fff152d8aae6da1c5bc started: -; exited: -; ]
+~> TaskHandler[jobId: 39581846; id: 67; name: HISAT2_ALIGN (Hcy_293T_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/1c/b3e4a45cb2615e065b1c7dd14f1e43 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581847; id: 68; name: HISAT2_ALIGN (Met_293T_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/a09782ab1683575a93a072a68334f8 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581870; id: 71; name: HISAT2_ALIGN (Hcy_293T_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/00/a1da8e3344168b62f440f67aee29de started: -; exited: -; ]
+.. remaining tasks omitted.
+Jun-12 12:50:06.693 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581828; id: 59; name: HISAT2_ALIGN (Met_468_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/fc/2be0e392a0625a2588cf03a46cf24c started: 1749757231669; exited: 2025-06-12T19:50:05.98412Z; ]
+Jun-12 12:50:11.715 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581829; id: 58; name: HISAT2_ALIGN (Hcy_R8_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/3c/b33c0c5e62aa10688229f10fc34cc4 started: 1749757256685; exited: 2025-06-12T19:49:50.087817Z; ]
+Jun-12 12:53:51.695 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581830; id: 60; name: HISAT2_ALIGN (Met_R8_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/72/92d61d4dd48a05ca72b771d07390d5 started: 1749757411684; exited: 2025-06-12T19:53:31.702775Z; ]
+~> TaskHandler[jobId: 39581831; id: 61; name: HISAT2_ALIGN (Hcy_468_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/47/05688ef4ffb92504e87e92cafd7f2a started: 1749757536686; exited: -; ]
+~> TaskHandler[jobId: 39581832; id: 63; name: HISAT2_ALIGN (Met_R1_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/81/df71b736f15297f09b0d11a80620dc started: 1749757621814; exited: -; ]
+~> TaskHandler[jobId: 39581833; id: 62; name: HISAT2_ALIGN (Hcy_468_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/26/eb490ca6a5b05a6141d7e0f83ff1c9 started: 1749757806756; exited: -; ]
+~> TaskHandler[jobId: 39581836; id: 65; name: HISAT2_ALIGN (Hcy_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b8/d2d267b8003fff152d8aae6da1c5bc started: 1749757846694; exited: -; ]
+~> TaskHandler[jobId: 39581846; id: 67; name: HISAT2_ALIGN (Hcy_293T_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/1c/b3e4a45cb2615e065b1c7dd14f1e43 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581847; id: 68; name: HISAT2_ALIGN (Met_293T_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/a09782ab1683575a93a072a68334f8 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581870; id: 71; name: HISAT2_ALIGN (Hcy_293T_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/00/a1da8e3344168b62f440f67aee29de started: -; exited: -; ]
+~> TaskHandler[jobId: 39581871; id: 72; name: HISAT2_ALIGN (Hcy_R1_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/69/b9d832c3da7159e2944bb06f0f5878 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581874; id: 75; name: HISAT2_ALIGN (Met_293T_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/db/fd94134cc6445a2752088af5cca397 started: -; exited: -; ]
+.. remaining tasks omitted.
+Jun-12 12:53:51.696 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581830; id: 60; name: HISAT2_ALIGN (Met_R8_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/72/92d61d4dd48a05ca72b771d07390d5 started: 1749757411684; exited: 2025-06-12T19:53:31.702775Z; ]
+Jun-12 12:57:21.713 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581831; id: 61; name: HISAT2_ALIGN (Hcy_468_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/47/05688ef4ffb92504e87e92cafd7f2a started: 1749757536686; exited: 2025-06-12T19:57:08.00031Z; ]
+Jun-12 12:58:51.705 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 13 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581832; id: 63; name: HISAT2_ALIGN (Met_R1_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/81/df71b736f15297f09b0d11a80620dc started: 1749757621814; exited: -; ]
+~> TaskHandler[jobId: 39581833; id: 62; name: HISAT2_ALIGN (Hcy_468_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/26/eb490ca6a5b05a6141d7e0f83ff1c9 started: 1749757806756; exited: -; ]
+~> TaskHandler[jobId: 39581836; id: 65; name: HISAT2_ALIGN (Hcy_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b8/d2d267b8003fff152d8aae6da1c5bc started: 1749757846694; exited: -; ]
+~> TaskHandler[jobId: 39581846; id: 67; name: HISAT2_ALIGN (Hcy_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/1c/b3e4a45cb2615e065b1c7dd14f1e43 started: 1749758031709; exited: -; ]
+~> TaskHandler[jobId: 39581847; id: 68; name: HISAT2_ALIGN (Met_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/a09782ab1683575a93a072a68334f8 started: 1749758236720; exited: -; ]
+~> TaskHandler[jobId: 39581870; id: 71; name: HISAT2_ALIGN (Hcy_293T_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/00/a1da8e3344168b62f440f67aee29de started: -; exited: -; ]
+~> TaskHandler[jobId: 39581871; id: 72; name: HISAT2_ALIGN (Hcy_R1_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/69/b9d832c3da7159e2944bb06f0f5878 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581874; id: 75; name: HISAT2_ALIGN (Met_293T_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/db/fd94134cc6445a2752088af5cca397 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581898; id: 77; name: HISAT2_ALIGN (Met_293T_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/71/618b646741adcec135a91c3e1dbab5 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581909; id: 79; name: HISAT2_ALIGN (Met_R1_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/d7ff15372bbf1b02f3ddce1624bc64 started: -; exited: -; ]
+.. remaining tasks omitted.
+Jun-12 12:59:21.709 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581832; id: 63; name: HISAT2_ALIGN (Met_R1_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/81/df71b736f15297f09b0d11a80620dc started: 1749757621814; exited: 2025-06-12T19:58:28.819371Z; ]
+Jun-12 13:02:01.716 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581833; id: 62; name: HISAT2_ALIGN (Hcy_468_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/26/eb490ca6a5b05a6141d7e0f83ff1c9 started: 1749757806756; exited: 2025-06-12T20:01:56.169215Z; ]
+Jun-12 13:03:06.718 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581836; id: 65; name: HISAT2_ALIGN (Hcy_R1_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/b8/d2d267b8003fff152d8aae6da1c5bc started: 1749757846694; exited: 2025-06-12T20:03:02.971583Z; ]
+Jun-12 13:03:51.720 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 10 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581846; id: 67; name: HISAT2_ALIGN (Hcy_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/1c/b3e4a45cb2615e065b1c7dd14f1e43 started: 1749758031709; exited: -; ]
+~> TaskHandler[jobId: 39581847; id: 68; name: HISAT2_ALIGN (Met_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/a09782ab1683575a93a072a68334f8 started: 1749758236720; exited: -; ]
+~> TaskHandler[jobId: 39581870; id: 71; name: HISAT2_ALIGN (Hcy_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/00/a1da8e3344168b62f440f67aee29de started: 1749758361762; exited: -; ]
+~> TaskHandler[jobId: 39581871; id: 72; name: HISAT2_ALIGN (Hcy_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/69/b9d832c3da7159e2944bb06f0f5878 started: 1749758551735; exited: -; ]
+~> TaskHandler[jobId: 39581874; id: 75; name: HISAT2_ALIGN (Met_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/db/fd94134cc6445a2752088af5cca397 started: 1749758611736; exited: -; ]
+~> TaskHandler[jobId: 39581898; id: 77; name: HISAT2_ALIGN (Met_293T_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/71/618b646741adcec135a91c3e1dbab5 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581909; id: 79; name: HISAT2_ALIGN (Met_R1_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/d7ff15372bbf1b02f3ddce1624bc64 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581931; id: 80; name: HISAT2_ALIGN (Hcy_293T_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/66/56c7015a7dd95a94d8b6dbb437d313 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581949; id: 82; name: HISAT2_ALIGN (Met_R1_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/d974848d3d40a9d0b99e4a8a608cbb started: -; exited: -; ]
+~> TaskHandler[jobId: 39581997; id: 84; name: HISAT2_ALIGN (Hcy_R1_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/82/00bd63df97e35c52a8cd78b0255beb started: -; exited: -; ]
+Jun-12 13:07:36.736 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581846; id: 67; name: HISAT2_ALIGN (Hcy_293T_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/1c/b3e4a45cb2615e065b1c7dd14f1e43 started: 1749758031709; exited: 2025-06-12T20:07:21.694148Z; ]
+Jun-12 13:08:51.727 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 9 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581847; id: 68; name: HISAT2_ALIGN (Met_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/a09782ab1683575a93a072a68334f8 started: 1749758236720; exited: -; ]
+~> TaskHandler[jobId: 39581870; id: 71; name: HISAT2_ALIGN (Hcy_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/00/a1da8e3344168b62f440f67aee29de started: 1749758361762; exited: -; ]
+~> TaskHandler[jobId: 39581871; id: 72; name: HISAT2_ALIGN (Hcy_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/69/b9d832c3da7159e2944bb06f0f5878 started: 1749758551735; exited: -; ]
+~> TaskHandler[jobId: 39581874; id: 75; name: HISAT2_ALIGN (Met_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/db/fd94134cc6445a2752088af5cca397 started: 1749758611736; exited: -; ]
+~> TaskHandler[jobId: 39581898; id: 77; name: HISAT2_ALIGN (Met_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/71/618b646741adcec135a91c3e1dbab5 started: 1749758851968; exited: -; ]
+~> TaskHandler[jobId: 39581909; id: 79; name: HISAT2_ALIGN (Met_R1_Rep1); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/d7ff15372bbf1b02f3ddce1624bc64 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581931; id: 80; name: HISAT2_ALIGN (Hcy_293T_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/66/56c7015a7dd95a94d8b6dbb437d313 started: -; exited: -; ]
+~> TaskHandler[jobId: 39581949; id: 82; name: HISAT2_ALIGN (Met_R1_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/d974848d3d40a9d0b99e4a8a608cbb started: -; exited: -; ]
+~> TaskHandler[jobId: 39581997; id: 84; name: HISAT2_ALIGN (Hcy_R1_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/82/00bd63df97e35c52a8cd78b0255beb started: -; exited: -; ]
+Jun-12 13:10:36.739 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581847; id: 68; name: HISAT2_ALIGN (Met_293T_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/5d/a09782ab1683575a93a072a68334f8 started: 1749758236720; exited: 2025-06-12T20:10:12.935274Z; ]
+Jun-12 13:12:36.742 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581870; id: 71; name: HISAT2_ALIGN (Hcy_293T_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/00/a1da8e3344168b62f440f67aee29de started: 1749758361762; exited: 2025-06-12T20:12:30.860909Z; ]
+Jun-12 13:13:51.736 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 7 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581871; id: 72; name: HISAT2_ALIGN (Hcy_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/69/b9d832c3da7159e2944bb06f0f5878 started: 1749758551735; exited: -; ]
+~> TaskHandler[jobId: 39581874; id: 75; name: HISAT2_ALIGN (Met_293T_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/db/fd94134cc6445a2752088af5cca397 started: 1749758611736; exited: -; ]
+~> TaskHandler[jobId: 39581898; id: 77; name: HISAT2_ALIGN (Met_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/71/618b646741adcec135a91c3e1dbab5 started: 1749758851968; exited: -; ]
+~> TaskHandler[jobId: 39581909; id: 79; name: HISAT2_ALIGN (Met_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/d7ff15372bbf1b02f3ddce1624bc64 started: 1749759031816; exited: -; ]
+~> TaskHandler[jobId: 39581931; id: 80; name: HISAT2_ALIGN (Hcy_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/66/56c7015a7dd95a94d8b6dbb437d313 started: 1749759151748; exited: -; ]
+~> TaskHandler[jobId: 39581949; id: 82; name: HISAT2_ALIGN (Met_R1_Rep2); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/d974848d3d40a9d0b99e4a8a608cbb started: -; exited: -; ]
+~> TaskHandler[jobId: 39581997; id: 84; name: HISAT2_ALIGN (Hcy_R1_Rep3); status: SUBMITTED; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/82/00bd63df97e35c52a8cd78b0255beb started: -; exited: -; ]
+Jun-12 13:16:46.748 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581871; id: 72; name: HISAT2_ALIGN (Hcy_R1_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/69/b9d832c3da7159e2944bb06f0f5878 started: 1749758551735; exited: 2025-06-12T20:16:46.462544Z; ]
+Jun-12 13:18:21.744 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581874; id: 75; name: HISAT2_ALIGN (Met_293T_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/db/fd94134cc6445a2752088af5cca397 started: 1749758611736; exited: 2025-06-12T20:18:01.678331Z; ]
+Jun-12 13:18:51.743 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 5 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581898; id: 77; name: HISAT2_ALIGN (Met_293T_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/71/618b646741adcec135a91c3e1dbab5 started: 1749758851968; exited: -; ]
+~> TaskHandler[jobId: 39581909; id: 79; name: HISAT2_ALIGN (Met_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/d7ff15372bbf1b02f3ddce1624bc64 started: 1749759031816; exited: -; ]
+~> TaskHandler[jobId: 39581931; id: 80; name: HISAT2_ALIGN (Hcy_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/66/56c7015a7dd95a94d8b6dbb437d313 started: 1749759151748; exited: -; ]
+~> TaskHandler[jobId: 39581949; id: 82; name: HISAT2_ALIGN (Met_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/d974848d3d40a9d0b99e4a8a608cbb started: 1749759451759; exited: -; ]
+~> TaskHandler[jobId: 39581997; id: 84; name: HISAT2_ALIGN (Hcy_R1_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/82/00bd63df97e35c52a8cd78b0255beb started: 1749759516788; exited: -; ]
+Jun-12 13:21:56.750 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581898; id: 77; name: HISAT2_ALIGN (Met_293T_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/71/618b646741adcec135a91c3e1dbab5 started: 1749758851968; exited: 2025-06-12T20:21:52.47264Z; ]
+Jun-12 13:23:51.750 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 4 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581909; id: 79; name: HISAT2_ALIGN (Met_R1_Rep1); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/d7ff15372bbf1b02f3ddce1624bc64 started: 1749759031816; exited: -; ]
+~> TaskHandler[jobId: 39581931; id: 80; name: HISAT2_ALIGN (Hcy_293T_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/66/56c7015a7dd95a94d8b6dbb437d313 started: 1749759151748; exited: -; ]
+~> TaskHandler[jobId: 39581949; id: 82; name: HISAT2_ALIGN (Met_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/d974848d3d40a9d0b99e4a8a608cbb started: 1749759451759; exited: -; ]
+~> TaskHandler[jobId: 39581997; id: 84; name: HISAT2_ALIGN (Hcy_R1_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/82/00bd63df97e35c52a8cd78b0255beb started: 1749759516788; exited: -; ]
+Jun-12 13:26:46.768 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581909; id: 79; name: HISAT2_ALIGN (Met_R1_Rep1); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/c7/d7ff15372bbf1b02f3ddce1624bc64 started: 1749759031816; exited: 2025-06-12T20:26:02.207756Z; ]
+Jun-12 13:28:46.782 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581931; id: 80; name: HISAT2_ALIGN (Hcy_293T_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/66/56c7015a7dd95a94d8b6dbb437d313 started: 1749759151748; exited: 2025-06-12T20:28:32.025256Z; ]
+Jun-12 13:28:52.110 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581949; id: 82; name: HISAT2_ALIGN (Met_R1_Rep2); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/d974848d3d40a9d0b99e4a8a608cbb started: 1749759451759; exited: -; ]
+~> TaskHandler[jobId: 39581997; id: 84; name: HISAT2_ALIGN (Hcy_R1_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/82/00bd63df97e35c52a8cd78b0255beb started: 1749759516788; exited: -; ]
+Jun-12 13:33:47.144 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581949; id: 82; name: HISAT2_ALIGN (Met_R1_Rep2); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/d974848d3d40a9d0b99e4a8a608cbb started: 1749759451759; exited: 2025-06-12T20:33:41.166794Z; ]
+Jun-12 13:33:52.122 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 39581997; id: 84; name: HISAT2_ALIGN (Hcy_R1_Rep3); status: RUNNING; exit: -; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/82/00bd63df97e35c52a8cd78b0255beb started: 1749759516788; exited: -; ]
+Jun-12 13:35:02.126 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39581997; id: 84; name: HISAT2_ALIGN (Hcy_R1_Rep3); status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/82/00bd63df97e35c52a8cd78b0255beb started: 1749759516788; exited: 2025-06-12T20:34:53.45833Z; ]
+Jun-12 13:35:06.231 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FEATURE_COUNTS_PE > jobId: 39605346; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9b/7b5f321727d0a313463eef27647101
+Jun-12 13:35:06.231 [Task submitter] INFO  nextflow.Session - [9b/7b5f32] Submitted process > FEATURE_COUNTS_PE
+Jun-12 13:35:06.259 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FEATURE_COUNTS_SE > jobId: 39605347; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/92ad8bf6d88649a238be7b8746780b
+Jun-12 13:35:06.259 [Task submitter] INFO  nextflow.Session - [83/92ad8b] Submitted process > FEATURE_COUNTS_SE
+Jun-12 13:36:42.130 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39605347; id: 87; name: FEATURE_COUNTS_SE; status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/83/92ad8bf6d88649a238be7b8746780b started: 1749760537128; exited: 2025-06-12T20:36:26.044249Z; ]
+Jun-12 13:37:12.129 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39605346; id: 86; name: FEATURE_COUNTS_PE; status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/9b/7b5f321727d0a313463eef27647101 started: 1749760537125; exited: 2025-06-12T20:36:54.718797Z; ]
+Jun-12 13:37:12.239 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MERGE_COUNTS > jobId: 39605432; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/ef/a30ebe2abcf348ac65d508e820a383
+Jun-12 13:37:12.239 [Task submitter] INFO  nextflow.Session - [ef/a30ebe] Submitted process > MERGE_COUNTS
+Jun-12 13:37:47.132 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39605432; id: 88; name: MERGE_COUNTS; status: COMPLETED; exit: 0; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/ef/a30ebe2abcf348ac65d508e820a383 started: 1749760637129; exited: 2025-06-12T20:37:17.558314Z; ]
+Jun-12 13:37:47.309 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MULTIQC > jobId: 39605459; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/91/495a758a3c2529feaa7bb6fdb3bb4f
+Jun-12 13:37:47.309 [Task submitter] INFO  nextflow.Session - [91/495a75] Submitted process > MULTIQC
+Jun-12 13:37:52.134 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 39605459; id: 89; name: MULTIQC; status: COMPLETED; exit: 127; error: -; workDir: /share/crsp/lab/pkaiser/ddlin/nextflow_work/91/495a758a3c2529feaa7bb6fdb3bb4f started: 1749760672130; exited: 2025-06-12T20:37:48.05526Z; ]
+Jun-12 13:37:52.141 [TaskFinalizer-9] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=MULTIQC; work-dir=/share/crsp/lab/pkaiser/ddlin/nextflow_work/91/495a758a3c2529feaa7bb6fdb3bb4f
+  error [nextflow.exception.ProcessFailedException]: Process `MULTIQC` terminated with an error exit status (127)
+Jun-12 13:37:52.186 [TaskFinalizer-9] ERROR nextflow.processor.TaskProcessor - Error executing process > 'MULTIQC'
 
-Jun-12 01:05:26.279 [Actor Thread 5] ERROR nextflow.extension.OperatorImpl - @unknown
-nextflow.exception.WorkflowScriptErrorException: Samplesheet is empty or not found: samplesheet.csv
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.Nextflow.error(Nextflow.groovy:241)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at Script_448837288476032d$_runScript_closure1$_closure12$_closure14.doCall(Script_448837288476032d:36)
-	at Script_448837288476032d$_runScript_closure1$_closure12$_closure14.doCall(Script_448837288476032d)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.extension.OperatorImpl$_ifEmpty_closure30.doCall(OperatorImpl.groovy:1043)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.extension.DataflowHelper$3.afterStop(DataflowHelper.groovy:257)
-	at groovyx.gpars.dataflow.operator.DataflowProcessor.fireAfterStop(DataflowProcessor.java:324)
-	at groovyx.gpars.dataflow.operator.DataflowProcessorActor.afterStop(DataflowProcessorActor.java:59)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokePojoMethod(InvokerHelper.java:633)
-	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:624)
-	at groovyx.gpars.actor.Actor.callDynamic(Actor.java:369)
-	at groovyx.gpars.actor.Actor.handleTermination(Actor.java:320)
-	at groovyx.gpars.actor.AbstractLoopingActor$1.handleMessage(AbstractLoopingActor.java:86)
-	at groovyx.gpars.util.AsyncMessagingCore.run(AsyncMessagingCore.java:132)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-Jun-12 01:05:26.281 [main] ERROR nextflow.cli.Launcher - @unknown
-nextflow.exception.MissingProcessException: Missing process or function isEmpty()
-	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:192)
-	at nextflow.script.BindableDef.invoke_a(BindableDef.groovy:51)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.script.BaseScript.run0(BaseScript.groovy:182)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.script.BaseScript.run(BaseScript.groovy:193)
-	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy:246)
-	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy)
-	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:246)
-	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:139)
-	at nextflow.cli.CmdRun.run(CmdRun.groovy:379)
-	at nextflow.cli.Launcher.run(Launcher.groovy:513)
-	at nextflow.cli.Launcher.main(Launcher.groovy:673)
-Caused by: groovy.lang.MissingMethodException: No signature of method: groovyx.gpars.dataflow.DataflowBroadcast.isEmpty() is applicable for argument types: () values: []
-Possible solutions: identity(groovy.lang.Closure), dump(), inspect(), dump(), dump()
-	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:72)
-	at org.codehaus.groovy.vmplugin.v8.IndyGuardsFiltersAndSignatures.unwrap(IndyGuardsFiltersAndSignatures.java:163)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at Script_448837288476032d$_runScript_closure1$_closure12.doCall(Script_448837288476032d:48)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at groovy.lang.Closure.call(Closure.java:433)
-	at groovy.lang.Closure.call(Closure.java:412)
-	at nextflow.script.WorkflowDef.run0(WorkflowDef.groovy:205)
-	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:189)
-	... 12 common frames omitted
+Caused by:
+  Process `MULTIQC` terminated with an error exit status (127)
+
+
+Command executed:
+
+  multiqc . -f
+
+Command exit status:
+  127
+
+Command output:
+  (empty)
+
+Command error:
+  .command.sh: line 2: multiqc: command not found
+
+Work dir:
+  /share/crsp/lab/pkaiser/ddlin/nextflow_work/91/495a758a3c2529feaa7bb6fdb3bb4f
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+Jun-12 13:37:52.189 [TaskFinalizer-9] DEBUG nextflow.Session - Session aborted -- Cause: Process `MULTIQC` terminated with an error exit status (127)
+Jun-12 13:37:52.192 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun-12 13:37:52.218 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jun-12 13:37:52.218 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun-12 13:37:52.228 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=88; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=2d 15h 22m 7s; failedDuration=6ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=25; peakCpus=104; peakMemory=624 GB; ]
+Jun-12 13:37:52.425 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun-12 13:37:52.454 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

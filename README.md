@@ -1,256 +1,167 @@
-Of course. Here is the updated `README.md`.
+Of course. Based on the robust and flexible Nextflow script we've built, here is a comprehensive `README.md` file. You can save this directly into your project's directory.
 
-This version has been thoroughly revised to reflect the latest pipeline capabilities, including:
+---
 
-  * Handling of both **paired-end and single-end** data.
-  * The new, more detailed **samplesheet format**.
-  * The updated **output structure**, which saves key results directly alongside the source data.
-  * A more accurate description of the current **workflow logic**.
+# Flexible RNA-Seq Analysis Pipeline
 
-All typos like `mani.nf` have been corrected to `main.nf`.
+This repository contains a modular and resource-aware RNA-Seq analysis pipeline built with Nextflow. It is designed for use in HPC environments (specifically with the SLURM scheduler) and provides granular control over execution steps to manage storage and computational resources effectively.
 
------
+The pipeline performs standard RNA-Seq analysis, including quality control, adapter trimming, alignment, and gene-level quantification.
 
-# RNA-Seq Analysis Pipeline
+## Key Features
 
-\<p align="center"\>
-\<a href="[suspicious link removed]" target="\_blank" rel="noopener noreferrer"\>\<img src="[suspicious link removed]" alt="Nextflow"\>\</a\>
-\<a href="[suspicious link removed]" target="\_blank" rel="noopener noreferrer"\>\<img src="[suspicious link removed]" alt="License"\>\</a\>
-\</p\>
+-   **Step-wise Execution**: Run the entire pipeline or stop after a specific stage (QC, trimming, or alignment).
+-   **Storage Management**: Optimized for environments with limited home directory space by allowing the large temporary `work` directory to be placed on a separate, larger storage volume.
+-   **Efficient File Handling**: Uses `move` for publishing results, cleaning up the work directory as it runs to conserve space.
+-   **Flexible Input**: Handles both single-end and paired-end data, as well as samples with multiple FASTQ files (e.g., from different lanes).
+-   **Customizable**: Per-sample trimming parameters can be specified directly in the samplesheet.
 
-A robust and flexible Nextflow pipeline for the analysis of RNA-sequencing data. It supports both paired-end and single-end reads, performing quality control, adapter trimming, alignment, and gene-level quantification.
+## Pipeline Steps
 
------
+The pipeline uses the following tools:
 
-## Table of Contents
+1.  **FastQC** (`v0.11.9`): Initial quality control on raw and trimmed reads.
+2.  **Trim Galore!** (`v0.6.7`): Adapter and quality trimming.
+3.  **HISAT2** (`v2.2.1`): Alignment of reads to a reference genome.
+4.  **Samtools** (`v1.15.1`): Sorting and indexing of BAM alignment files.
+5.  **featureCounts** (Subread `v2.0.3`): Gene-level quantification.
+6.  **MultiQC**: Aggregates analysis results and logs into a final, unified report.
 
-  - [Introduction](https://www.google.com/search?q=%23introduction)
-  - [Pipeline Workflow](https://www.google.com/search?q=%23pipeline-workflow)
-  - [System Requirements](https://www.google.com/search?q=%23system-requirements)
-  - [Installation & Setup](https://www.google.com/search?q=%23installation--setup)
-  - [Usage](https://www.google.com/search?q=%23usage)
-  - [Output Directory Structure](https://www.google.com/search?q=%23output-directory-structure)
-  - [Troubleshooting](https://www.google.com/search?q=%23troubleshooting)
-  - [Contributing](https://www.google.com/search?q=%23contributing)
-  - [License](https://www.google.com/search?q=%23license)
-  - [Contact](https://www.google.com/search?q=%23contact)
+## Prerequisites
 
------
+Before running the pipeline, please ensure you have the following installed and available in your environment:
 
-## Introduction
+-   **Nextflow** (`~21.10.x` or later)
+-   **HPC Environment Modules**: The pipeline is configured to use environment modules for its software dependencies. Ensure that modules for the tools listed above are available on your system.
 
-This pipeline processes raw FASTQ files through a series of standard bioinformatics tools to produce a gene count matrix and a comprehensive quality control report. Built with Nextflow, it offers excellent scalability and reproducibility, enabling it to run on local machines, HPC clusters, or cloud environments with minimal configuration changes.
+## Setup
 
-### Key Features
+1.  **Clone or download the pipeline files:**
+    Place `main.nf` and `nextflow.config` in your project directory.
 
-  - **Handles Both SE & PE Data**: Processes paired-end and single-end data seamlessly based on a simple samplesheet annotation.
-  - **Flexible Execution Modes**:
-    1.  **Full Pipeline Mode**: Executes the complete workflow from trimming to counting.
-    2.  **Trim-Only Mode**: Runs only trimming and MultiQC to assess trimming results before a full run.
-    3.  **QC-Only Mode**: Runs an initial `FastQC` and `MultiQC` on raw reads to assess data quality.
-  - **Targeted Outputs**: Saves trimmed reads and alignments in a `trimmed/` subdirectory alongside the original data for easy access.
-  - **Portability**: Supports various execution environments like SLURM, Conda, Docker, and Singularity.
-  - **Reproducibility**: Ensures that the analysis is reproducible by managing dependencies and workflow versions.
-  - **Customizable**: Per-sample trimming parameters can be specified directly in the samplesheet.
+2.  **Prepare Reference Genomes:**
+    You will need a reference genome in FASTA format and a corresponding gene annotation file in GTF format. You can specify their paths during pipeline execution.
 
------
+3.  **Create a Samplesheet:**
+    The pipeline requires a samplesheet in CSV format (`.csv`) that details the input files. The default filename is `samplesheet.csv`.
 
-## Pipeline Workflow
+    **Columns:**
+    | Column | Description | Required |
+    | :--- | :--- | :--- |
+    | `sample` | A unique identifier for the sample. No spaces or special characters. | **Yes** |
+    | `fastq_1` | Full path to the forward read file (`_R1.fastq.gz`). For single-end data with multiple files per sample, this should be the first file. | **Yes** |
+    | `fastq_2` | Full path to the reverse read file (`_R2.fastq.gz`). **Leave this column empty for single-end data.** | No |
+    | `trim_type` | The type of sequencing data. Must be either `single` or `paired`. | **Yes** |
+    | `trim_args`| Optional custom arguments for Trim Galore!. If left blank, the default from `nextflow.config` is used. | No |
 
-The pipeline consists of the following major steps:
-
-1.  **Input Reading**: The `samplesheet.csv` is parsed to identify sample metadata and read paths.
-2.  **Data Branching**: Samples are automatically branched into **single-end** or **paired-end** workflows based on the `trim_type` column.
-3.  **SE Read Combination (CAT\_SE\_READS)**: For single-end samples with multiple FASTQ files (e.g., from different lanes like L6/L7), the files are concatenated into one.
-4.  **Adapter/Quality Trimming (Trim Galore)**: Adapters and low-quality bases are removed from each sample.
-5.  **Quality Control (FastQC)**: Per-sample quality control reports are generated from the trimmed reads.
-6.  **Genome Indexing (HISAT2)**: A genome index is built from a reference FASTA file (this step is skipped on subsequent runs).
-7.  **Alignment (HISAT2)**: Trimmed reads (both SE and PE) are aligned to the reference genome.
-8.  **Gene Quantification (featureCounts)**: Aligned reads are assigned to genes based on a GTF annotation file. PE and SE samples are processed separately to ensure correct counting parameters.
-9.  **Merge Counts (MERGE\_COUNTS)**: The count results from the PE and SE streams are merged into a final gene count matrix.
-10. **Aggregate Reporting (MultiQC)**: Results and logs from all tools are combined into a single, interactive HTML report.
-
------
-
-## System Requirements
-
-  - **Nextflow**: Version `21.10.3` or higher.
-  - **Execution Environment**:
-      - An HPC system with a job scheduler like SLURM.
-      - Alternatively, Conda, Docker, or Singularity can be used for dependency management.
-  - **Dependencies**:
-      - Trim Galore
-      - FastQC
-      - HISAT2
-      - SAMtools
-      - Subread/featureCounts
-      - Python (for `MULTIQC` and helper scripts)
-
------
-
-## Installation & Setup
-
-1.  **Clone the Repository**:
-
-    ```bash
-    git clone <repository_url>
-    cd <repository_name>
+    **Example `samplesheet.csv`:**
+    ```csv
+    sample,fastq_1,fastq_2,trim_type,trim_args
+    Sample_A_PE,/path/to/data/sampA_R1.fq.gz,/path/to/data/sampA_R2.fq.gz,paired,
+    Sample_B_PE,/path/to/data/sampB_R1.fq.gz,/path/to/data/sampB_R2.fq.gz,paired,--quality 15 --length 25
+    Sample_C_SE,/path/to/data/sampC.fq.gz,,single,
     ```
-
-2.  **Configure the Pipeline**:
-    Edit the `nextflow.config` file to specify paths for your reference genome and annotation files.
-
-    ```groovy
-    params {
-        // ... other params
-        genome_fasta = '/path/to/your/genome/hg38.fa'
-        genome_gtf = '/path/to/your/genome/hg38.gtf'
-        // ...
-    }
-    ```
-
------
 
 ## Usage
 
-### 1\. Prepare Input Data
+### Basic Command
 
-Create a `samplesheet.csv` file with the structure detailed below. This sheet is critical for defining samples, their read types, and any custom parameters.
+The basic command to execute the pipeline is:
 
-**`samplesheet.csv` Columns:**
+```bash
+nextflow run main.nf -profile hpc [options]
+```
 
-| Column | Description | Example |
+### Core Parameters
+
+| Parameter | Description | Example |
 | :--- | :--- | :--- |
-| `sample` | New, clean sample identifier. Used for naming output files. | `Hcy_293T_Rep1` |
-| `orig_name_1` | Original filename of the first read file for traceability. | `Hcy_1_293T_4_1.fq.gz` |
-| `orig_name_2` | Original filename of the second read file. | `Hcy_1_293T_4_2.fq.gz` |
-| `fastq_1` | Full path to the first FASTQ file (Read 1 for PE, or first SE file). | `/path/to/Hcy_1_293T_4_1.fq.gz` |
-| `fastq_2` | Full path to the second FASTQ file (Read 2 for PE, or second SE file). | `/path/to/Hcy_1_293T_4_2.fq.gz` |
-| `condition` | Experimental condition metadata. | `Hcy` |
-| `cell_line`| Cell line metadata. | `293T` |
-| `parental_line`| Parental cell line metadata. | `293T` |
-| `trim_type`| **Crucial**: Set to `paired` or `single` to direct the workflow. | `paired` |
-| `trim_args`| Optional arguments to override default Trim Galore settings. | `--quality 15` |
+| `--samplesheet_file` | Path to the input samplesheet CSV file. | `--samplesheet_file samples.csv` |
+| `--outdir` | Path to the directory where results will be saved. | `--outdir ./results` |
+| `--genome_fasta` | Path to the reference genome FASTA file. | `--genome_fasta /refs/hg38.fa` |
+| `--genome_gtf` | Path to the genome annotation GTF file. | `--genome_gtf /refs/hg38.gtf` |
 
-**Example `samplesheet.csv`**:
+### Storage Management
 
-```csv
-sample,orig_name_1,orig_name_2,fastq_1,fastq_2,condition,cell_line,parental_line,trim_type,trim_args
-Hcy_293T_Rep1,Hcy_1_293T_4_1.fq.gz,Hcy_1_293T_4_2.fq.gz,/path/to/data/Hcy_1_293T_4_1.fq.gz,/path/to/data/Hcy_1_293T_4_2.fq.gz,Hcy,293T,293T,paired,
-Hcy_468_Rep1,4R044-L6-P19.gz,4R044-L7-P19.gz,/path/to/data/Hcy_1_468_12hr_19/4R044-L6-P19.gz,/path/to/data/Hcy_1_468_12hr_19/4R044-L7-P19.gz,Hcy,468,468,single,--quality 15 --clip_R1 5
-```
-
-### 2\. Run the Pipeline
-
-Navigate to the pipeline directory and execute one of the following commands. The main script is **`main.nf`**. We recommend using the `hpc` profile for cluster execution.
-
-#### Mode 1: Full Pipeline Run
-
-Runs the complete workflow from trimming to feature counting.
+To prevent filling up your local or home storage, you can specify a location for the temporary `work` directory on a larger storage volume using the `-w` flag.
 
 ```bash
-nextflow run main.nf -profile hpc --outdir ./results
+# Example: Use a work directory on a large shared drive
+nextflow run main.nf -profile hpc -w /path/to/large/storage/work_dir
 ```
 
-#### Mode 2: Trim-Only Run
+### Step-wise Execution
 
-Runs only `Trim Galore` and `MultiQC` to check trimming results.
+Use the `--step` parameter to control how far the pipeline runs. This is useful for debugging, resource management, and milestone checks.
+
+-   `--step qc_raw`: Generates FastQC reports on raw reads and stops.
+-   `--step trim`: Runs `qc_raw` steps, then trims reads, generates FastQC reports on trimmed reads, and stops.
+-   `--step align`: Runs `trim` steps, then aligns reads to the genome, and stops.
+-   `--step full` (Default): Runs the complete pipeline, including feature counting.
+
+### Resuming a Pipeline
+
+If the pipeline is interrupted, you can resume it from the last successful step using the `-resume` flag. Nextflow will use cached results for completed tasks.
 
 ```bash
-nextflow run main.nf -profile hpc --trim_only true --outdir ./results
+# If the pipeline stopped during the alignment step, resume it
+nextflow run main.nf -profile hpc -w /path/to/work_dir -resume
 ```
 
-#### Mode 3: QC-Only Run
+### Example Commands
 
-Runs `FastQC` and `MultiQC` on the **raw reads** for an initial quality assessment.
+**1. Full Run on HPC**
+Run the complete pipeline using the `hpc` profile and specify a custom work directory and output folder.
 
 ```bash
-nextflow run main.nf -profile hpc --qc_only true --outdir ./results
+nextflow run main.nf -profile hpc \
+    -w /path/to/large_storage/nextflow_work \
+    --samplesheet_file samplesheet.csv \
+    --outdir ./final_results \
+    --genome_fasta /refs/hg38.fa \
+    --genome_gtf /refs/hg38.gtf
 ```
 
-### Resuming the Pipeline
-
-If the pipeline is interrupted, you can resume it from the last successfully completed step using the `-resume` flag.
+**2. Run Trimming Step Only**
+Execute the pipeline only up to the trimming and post-trimming QC stage.
 
 ```bash
-nextflow run main.nf -profile hpc --outdir ./results -resume
+nextflow run main.nf -profile hpc -w /path/to/work_dir --step trim
 ```
 
-### Command-line Parameters
+**3. Resume and Run Alignment**
+If you have already completed the `trim` step, you can resume the pipeline to run the `align` step.
 
-| Parameter | Description |
-| :--- | :--- |
-| `--outdir` | The directory where central results (counts, reports) will be saved (Default: `results`). |
-| `--samplesheet_file` | Path to the input samplesheet (Default: `samplesheet.csv`). |
-| `--trim_only` | A boolean flag to activate Trim-only mode (Default: `false`). |
-| `--qc_only` | A boolean flag to activate QC-only mode on raw reads (Default: `false`). |
-
------
+```bash
+nextflow run main.nf -profile hpc -w /path/to/work_dir --step align -resume
+```
 
 ## Output Directory Structure
 
-The pipeline produces outputs in two locations: a central results folder and a `trimmed` subfolder alongside your original data.
-
-### 1\. Per-Sample Outputs (In Source Data Directory)
-
-For each sample, a new directory named `trimmed/` is created within its original folder. This makes it easy to find processed files related to the source data.
-
-```
-/path/to/your/data/
-└── Hcy_1_293T_4/
-    ├── Hcy_1_293T_4_1.fq.gz          (Original Input)
-    ├── Hcy_1_293T_4_2.fq.gz          (Original Input)
-    └── trimmed/                      (NEW OUTPUT FOLDER)
-        ├── Hcy_293T_Rep1.bam
-        ├── Hcy_293T_Rep1.bam.bai
-        ├── Hcy_293T_Rep1.summary.txt
-        ├── Hcy_293T_Rep1_trimming_report.txt
-        ├── Hcy_293T_Rep1_val_1.fq.gz
-        └── Hcy_293T_Rep1_val_2.fq.gz
-```
-
-### 2\. Central Output Directory (Defined by `--outdir`)
-
-This directory contains pipeline-wide results and reports.
+The pipeline will create an output directory (default: `results/`) with the following structure:
 
 ```
 results/
+├── alignment/
+│   ├── Sample_A_PE/
+│   │   ├── Sample_A_PE.bam
+│   │   ├── Sample_A_PE.bam.bai
+│   │   └── Sample_A_PE.summary.txt
+│   └── ...
 ├── counts/
-│   ├── counts.tsv                  # Final merged gene count matrix
-│   └── counts.tsv.summary          # Summary of featureCounts run
-├── fastqc_raw/                       # FastQC reports (QC-only mode)
-│   └── ...
+│   ├── counts.tsv
+│   └── counts.tsv.summary
+├── fastqc_raw/
+│   ├── ...
+├── fastqc_trimmed/
+│   ├── ...
 ├── genome_index/
+│   ├── ...
+├── trimmed_reads/
+│   ├── Sample_A_PE/
+│   │   ├── Sample_A_PE_val_1.fq.gz
+│   │   ├── Sample_A_PE_val_2.fq.gz
+│   │   └── Sample_A_PE_trimming_report.txt
 │   └── ...
-└── multiqc_report.html               # Final aggregated MultiQC report
+└── multiqc_report.html
 ```
-
------
-
-## Troubleshooting
-
-  - **Issue**: Pipeline fails with an error related to environment modules.
-
-      - **Solution**: Ensure that the required software is available as environment modules on your HPC system and that the module names in `nextflow.config` are correct.
-
-  - **Issue**: `featureCounts` fails due to mixed SE/PE bams.
-
-      - **Solution**: This pipeline is designed to prevent this by separating SE and PE samples into different `featureCounts` processes before merging the text-based results. If this error occurs, check the `trim_type` column in your samplesheet for accuracy.
-
------
-
-## Contributing
-
-Contributions are welcome\! Please feel free to submit a pull request or open an issue to report bugs or suggest improvements.
-
------
-
-## License
-
-This project is licensed under the MIT License.
-
------
-
-## Contact
-
-For questions or support, please contact David at [tealeave@gmail.com].
