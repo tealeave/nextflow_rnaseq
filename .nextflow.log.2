@@ -1,0 +1,129 @@
+Jun-12 01:05:23.070 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile hpc -resume
+Jun-12 01:05:23.177 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.3
+Jun-12 01:05:23.196 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/data/homezvol2/ddlin/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.3,nf-wave@1.12.1
+Jun-12 01:05:23.230 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-12 01:05:23.232 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-12 01:05:23.239 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jun-12 01:05:23.253 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-12 01:05:23.279 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
+Jun-12 01:05:23.282 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/nextflow.config
+Jun-12 01:05:23.314 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /data/homezvol2/ddlin/.nextflow/secrets/store.json
+Jun-12 01:05:23.317 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@12477988] - activable => nextflow.secret.LocalSecretsProvider@12477988
+Jun-12 01:05:23.323 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `hpc`
+Jun-12 01:05:23.820 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [standard, hpc]
+Jun-12 01:05:23.922 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jun-12 01:05:23.943 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [small_sammet] DSL2 - revision: 0fe35bceaa
+Jun-12 01:05:23.945 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-12 01:05:23.945 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-12 01:05:23.997 [main] DEBUG nextflow.Session - Session UUID: 67d83ad6-941e-45eb-b28e-03e6d2ce35f5
+Jun-12 01:05:23.998 [main] DEBUG nextflow.Session - Run name: small_sammet
+Jun-12 01:05:23.998 [main] DEBUG nextflow.Session - Executor pool size: 4
+Jun-12 01:05:24.007 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jun-12 01:05:24.013 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-12 01:05:24.038 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.3 build 5949
+  Created: 02-06-2025 20:56 UTC (13:56 PDT)
+  System: Linux 4.18.0-553.22.1.el8_10.x86_64
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.13+11-LTS
+  Encoding: UTF-8 (UTF-8)
+  Process: 2268721@hpc3-14-17 [10.240.58.30]
+  CPUs: 4 - Mem: 12 GB (223 MB) - Swap: 0 (0)
+Jun-12 01:05:24.090 [main] DEBUG nextflow.Session - Work-dir: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/work [fhgfs]
+Jun-12 01:05:24.092 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/bin
+Jun-12 01:05:24.102 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-12 01:05:24.111 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-12 01:05:24.117 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Jun-12 01:05:24.142 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-12 01:05:24.151 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 5; maxThreads: 1000
+Jun-12 01:05:24.389 [main] DEBUG nextflow.Session - Session start
+Jun-12 01:05:26.098 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-12 01:05:26.236 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_448837288476032d: /dfs6/pub/ddlin/projects/new_rna_seq_results/nextflow_rnaseq/main.nf
+Jun-12 01:05:26.237 [main] DEBUG nextflow.Session - Session aborted -- Cause: Missing process or function isEmpty()
+Jun-12 01:05:26.257 [main] DEBUG nextflow.Session - The following nodes are still active:
+  [operator] splitCsv
+  [operator] map
+  [operator] ifEmpty
+  [operator] branch
+
+Jun-12 01:05:26.279 [Actor Thread 5] ERROR nextflow.extension.OperatorImpl - @unknown
+nextflow.exception.WorkflowScriptErrorException: Samplesheet is empty or not found: samplesheet.csv
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.Nextflow.error(Nextflow.groovy:241)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Script_448837288476032d$_runScript_closure1$_closure12$_closure14.doCall(Script_448837288476032d:36)
+	at Script_448837288476032d$_runScript_closure1$_closure12$_closure14.doCall(Script_448837288476032d)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.extension.OperatorImpl$_ifEmpty_closure30.doCall(OperatorImpl.groovy:1043)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.extension.DataflowHelper$3.afterStop(DataflowHelper.groovy:257)
+	at groovyx.gpars.dataflow.operator.DataflowProcessor.fireAfterStop(DataflowProcessor.java:324)
+	at groovyx.gpars.dataflow.operator.DataflowProcessorActor.afterStop(DataflowProcessorActor.java:59)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePojoMethod(InvokerHelper.java:633)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:624)
+	at groovyx.gpars.actor.Actor.callDynamic(Actor.java:369)
+	at groovyx.gpars.actor.Actor.handleTermination(Actor.java:320)
+	at groovyx.gpars.actor.AbstractLoopingActor$1.handleMessage(AbstractLoopingActor.java:86)
+	at groovyx.gpars.util.AsyncMessagingCore.run(AsyncMessagingCore.java:132)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Jun-12 01:05:26.281 [main] ERROR nextflow.cli.Launcher - @unknown
+nextflow.exception.MissingProcessException: Missing process or function isEmpty()
+	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:192)
+	at nextflow.script.BindableDef.invoke_a(BindableDef.groovy:51)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run0(BaseScript.groovy:182)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:193)
+	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy:246)
+	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:246)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:139)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:379)
+	at nextflow.cli.Launcher.run(Launcher.groovy:513)
+	at nextflow.cli.Launcher.main(Launcher.groovy:673)
+Caused by: groovy.lang.MissingMethodException: No signature of method: groovyx.gpars.dataflow.DataflowBroadcast.isEmpty() is applicable for argument types: () values: []
+Possible solutions: identity(groovy.lang.Closure), dump(), inspect(), dump(), dump()
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:72)
+	at org.codehaus.groovy.vmplugin.v8.IndyGuardsFiltersAndSignatures.unwrap(IndyGuardsFiltersAndSignatures.java:163)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Script_448837288476032d$_runScript_closure1$_closure12.doCall(Script_448837288476032d:48)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at nextflow.script.WorkflowDef.run0(WorkflowDef.groovy:205)
+	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:189)
+	... 12 common frames omitted
