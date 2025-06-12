@@ -192,3 +192,23 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# keep the data folder but ignore everything inside
+data/*
+genomes/*
+
+# Except the .gitkeep file
+!data/.gitkeep
+!genomes/.gitkeep
+
+# Ignore large reference genome files and indices
+genomes/*.fa
+genomes/*.gtf
+genomes/*.gz
+genomes/hisat2_index/
+
+# Nextflow intermediate file and output
+.nextflow/*
+work/*
+results/*
+work_symlink/*
